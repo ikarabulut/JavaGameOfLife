@@ -26,7 +26,16 @@ dependencies {
     implementation 'com.google.guava:guava:30.1.1-jre'
 }
 
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
 application {
     // Define the main class for the application.
     mainClass = 'com.ikarabulut.App'
 }
+
+
