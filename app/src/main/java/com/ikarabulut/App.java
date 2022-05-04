@@ -6,6 +6,8 @@ package com.ikarabulut;
 public class App {
 
     public static void main(String[] args) {
-
+        Board board = new Board();
+        board.setGrid();
+        System.out.println(board.getGrid());
     }
 }
