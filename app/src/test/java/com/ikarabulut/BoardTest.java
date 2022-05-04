@@ -14,8 +14,10 @@ class BoardTest {
         Board board = new Board();
         board.setGrid();
         ArrayList<ArrayList> generatedBoard = board.getGrid();
-        assertEquals(10, generatedBoard.size(), "10 rows are not being generated");
-        assertEquals(10, generatedBoard.get(0).size(), "10 columns are not being generated");
+        assertAll("default grid size",
+                () -> assertEquals(10, generatedBoard.size(), "10 rows are not being generated"),
+                () -> assertEquals(10, generatedBoard.get(0).size(), "10 columns are not being generated")
+        );
     }
 
     @Test
@@ -24,7 +26,18 @@ class BoardTest {
         Board board = new Board(20,20);
         board.setGrid();
         ArrayList<ArrayList> generatedBoard = board.getGrid();
-        assertEquals(20, generatedBoard.size(), "20 rows are not being generated");
-        assertEquals(20, generatedBoard.get(0).size(), "20 columns are not being generated");
+        assertAll("custom grid size",
+                () -> assertEquals(20, generatedBoard.size(), "20 rows are not being generated"),
+                () -> assertEquals(20, generatedBoard.get(0).size(), "20 columns are not being generated")
+        );
     }
+
+//    @Test
+//    @DisplayName("Given no arguments are passed, the grid is generated with random cells")
+//    void createRandomWorld() {
+//        Board board = new Board();
+//        board.setGrid();
+//        board.generateRandomCells();
+//
+//    }
 }
