@@ -25,7 +25,7 @@ public class Board {
     public List<ArrayList> setGrid() {
         grid = new ArrayList<ArrayList>();
         for (int i = 0; i < rows; i++) {
-            grid.add(new ArrayList<String>(Collections.nCopies(columns, "-")));
+            grid.add(new ArrayList<Cell>(Collections.nCopies(columns, new Cell())));
         }
         return grid;
     }
