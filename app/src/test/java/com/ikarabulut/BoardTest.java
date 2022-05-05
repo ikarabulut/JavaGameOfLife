@@ -73,7 +73,7 @@ class BoardTest {
     }
 
     @Test
-    @DisplayName("A cell that is dead can be set to alive")
+    @DisplayName("The board can bring a cell to life at a given location")
     void setAliveAt() {
         Board board = new Board();
 
