@@ -62,7 +62,7 @@ public class Board {
         return selectedCell.checkIfAlive();
     }
 
-    public int getAliveNeighborsCountOf(int rowNum,int colNum) {
+    public int getNumberOfAliveNeighbors(int rowNum,int colNum) {
         int numOfAliveNeighbors = 0;
         List<Cell> neighborsList = getNeighborsOf(rowNum, colNum);
 
