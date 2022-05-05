@@ -101,7 +101,7 @@ class BoardTest {
         private void setAliveBoard() {
             for ( ArrayList<Cell> gridRow : board.getGrid()) {
                 for (Cell cell : gridRow) {
-                    cell.reviveMe();
+                    cell.revive();
                 }
             }
         }

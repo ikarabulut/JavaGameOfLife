@@ -42,7 +42,7 @@ public class Board {
                 if (Math.random() > 0.5) {
                     cell.die();
                 } else {
-                    cell.reviveMe();
+                    cell.revive();
                 }
             }
         }
@@ -54,7 +54,7 @@ public class Board {
 
     public void setAliveAt(int rowNum, int colNum) {
         Cell selectedCell = getCell(rowNum, colNum);
-        selectedCell.reviveMe();
+        selectedCell.revive();
     }
 
     public boolean isCellAliveAt(int rowNum, int colNum) {
