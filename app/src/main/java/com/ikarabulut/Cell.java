@@ -18,6 +18,10 @@ public class Cell {
         isAlive = true;
     }
 
+    public void die() {
+        isAlive = false;
+    }
+
     public String toString() {
         if (isAlive) {
             return aliveSymbol;
