@@ -15,7 +15,7 @@ class BoardTest {
     void setGridDefault() {
         Board board = new Board();
         List<ArrayList> generatedBoard = board.getGrid();
-        
+
         assertAll("default grid size",
                 () -> assertEquals(10, generatedBoard.size(), "10 rows are not being generated"),
                 () -> assertEquals(10, generatedBoard.get(0).size(), "10 columns are not being generated")
