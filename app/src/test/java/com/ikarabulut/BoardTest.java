@@ -15,6 +15,7 @@ class BoardTest {
     void setGridDefault() {
         Board board = new Board();
         List<ArrayList> generatedBoard = board.getGrid();
+        
         assertAll("default grid size",
                 () -> assertEquals(10, generatedBoard.size(), "10 rows are not being generated"),
                 () -> assertEquals(10, generatedBoard.get(0).size(), "10 columns are not being generated")
@@ -26,6 +27,7 @@ class BoardTest {
     void setGridCustom() {
         Board board = new Board(20,20);
         List<ArrayList> generatedBoard = board.getGrid();
+
         assertAll("custom grid size",
                 () -> assertEquals(20, generatedBoard.size(), "20 rows are not being generated"),
                 () -> assertEquals(20, generatedBoard.get(0).size(), "20 columns are not being generated")
@@ -37,14 +39,16 @@ class BoardTest {
     void setGridDefaultIsAllDead() {
         Board board = new Board();
         List<ArrayList> generatedBoard = board.getGrid();
-        boolean emptyBoard = true;
+
+        boolean isDeadBoard = true;
         for (ArrayList<Cell> boardRow : generatedBoard)
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive() == true) {
-                    emptyBoard = false;
+                    isDeadBoard = false;
             }
         }
-        assertTrue(emptyBoard);
+
+        assertTrue(isDeadBoard);
     }
 
     @Test
@@ -53,14 +57,16 @@ class BoardTest {
         Board board = new Board();
         board.setRandomGrid();
         List<ArrayList> randomBoard = board.getGrid();
-        boolean deadBoard = true;
+
+        boolean isDeadBoard = true;
         for (ArrayList<Cell> boardRow : randomBoard)
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive() == true) {
-                    deadBoard = false;
+                    isDeadBoard = false;
                 }
             }
-        assertFalse(deadBoard);
+
+        assertFalse(isDeadBoard);
     }
 
 }
