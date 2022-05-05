@@ -90,10 +90,19 @@ class BoardTest {
     @Nested
     @DisplayName("Tests for getAliveNeighborsCountOf")
     class GetAliveNeighborsCountOf {
+        public void setDeadBoard() {
+            for ( ArrayList<Cell> gridRow : board.getGrid()) {
+                for ( Cell cell : gridRow) {
+                    cell.die();
+                }
+            }
+        }
+
         public Board board;
         @BeforeEach
         void createBoard() {
             board = new Board(3,3);
+            setDeadBoard();
         }
         @Test
         @DisplayName("A cell with 0 alive neighbor should return 0 alive neighbor")
@@ -144,6 +153,7 @@ class BoardTest {
         @DisplayName("An alive cell on the left edge should register as an alive cell for a right edge cell")
         void getAliveNeighborsCountOfTest4() {
             Board largerBoard = new Board(5,5);
+            setDeadBoard();
             largerBoard.setAliveAt(2, 0);
 
             int numOfAliveNeighbors = largerBoard.getAliveNeighborsCountOf(2, 4);
@@ -155,6 +165,7 @@ class BoardTest {
         @DisplayName("An alive cell on the top left edge should register as an alive cell for a bottom right edge")
         void getAliveNeighborsCountOfTest5() {
             Board largerBoard = new Board(5, 5);
+            setDeadBoard();
             largerBoard.setAliveAt(0,0);
 
             int numOfAliveNeighbors = largerBoard.getAliveNeighborsCountOf(4, 4);
@@ -166,6 +177,7 @@ class BoardTest {
         @DisplayName("An alive cell on the bottom edge should register as an alive cell for a top edge cell")
         void getAliveNeighborsCountOfTest6() {
             Board largerBoard = new Board(5, 5);
+            setDeadBoard();
             largerBoard.setAliveAt(4, 2);
 
             int numOfAliveNeighbors = largerBoard.getAliveNeighborsCountOf(0, 2);
@@ -177,6 +189,7 @@ class BoardTest {
         @DisplayName("An alive cell on the bottom left edge should register as an alive cell for a top right cell")
         void getAliveNeighborsCountOfTest7() {
             Board largerBoard = new Board(5, 5);
+            setDeadBoard();
             largerBoard.setAliveAt(4, 0);
 
             int numOfALiveNeighbors = largerBoard.getAliveNeighborsCountOf(0, 4);
