@@ -47,4 +47,20 @@ class BoardTest {
         assertTrue(emptyBoard);
     }
 
+    @Test
+    @DisplayName("Given a random board gets generated, then the board will have alive and dead cells")
+    void setRandomGrid() {
+        Board board = new Board();
+        board.setRandomGrid();
+        List<ArrayList> randomBoard = board.getGrid();
+        boolean deadBoard = true;
+        for (ArrayList<Cell> boardRow : randomBoard)
+            for (Cell cell : boardRow) {
+                if (cell.checkIfAlive() == true) {
+                    deadBoard = false;
+                }
+            }
+        assertFalse(deadBoard);
+    }
+
 }
