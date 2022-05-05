@@ -88,7 +88,7 @@ class BoardTest {
     }
 
     @Nested
-    @DisplayName("Tests for getAliveNeighborsCountOf")
+    @DisplayName("getNumberOfAliveNeighbors()")
     class GetNumberOfAliveNeighbors {
         private void setDeadBoard() {
             for ( ArrayList<Cell> gridRow : board.getGrid()) {
