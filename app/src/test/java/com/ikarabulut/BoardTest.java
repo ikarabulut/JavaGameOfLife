@@ -194,6 +194,8 @@ class BoardTest {
             largerBoard.setAliveAt(4, 0);
 
             int numOfALiveNeighbors = largerBoard.getAliveNeighborsCountOf(0, 4);
+
+            assertEquals(numOfALiveNeighbors, 1);
         }
 
 
