@@ -19,4 +19,19 @@ class CellTest {
         cell.reviveMe();
         assertEquals(true, cell.checkIfAlive());
     }
+
+    @Test
+    @DisplayName("When no arguments are passed, and the cell is alive, it will return O")
+    void testAliveToString() {
+        Cell cell = new Cell();
+        assertEquals("-", cell.toString());
+    }
+
+    @Test
+    @DisplayName("When no arguments are passed, and the cell is alive, it will return -")
+    void testDeadToString() {
+        Cell cell = new Cell();
+        cell.reviveMe();
+        assertEquals("O", cell.toString());
+    }
 }
