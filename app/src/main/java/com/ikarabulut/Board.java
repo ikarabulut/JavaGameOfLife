@@ -110,6 +110,7 @@ public class Board {
         }
         return topNeighbor;
     }
+
     private Cell topRightNeighbor(int rowNum, int colNum) {
         Cell topRightNeighbor;
         if (rowNum == 0 && colNum == columns - 1) {
@@ -123,6 +124,7 @@ public class Board {
         }
         return topRightNeighbor;
     }
+
     private Cell leftNeighbor(int rowNum, int colNum) {
         Cell leftNeighbor;
         if (colNum == 0) {
@@ -132,6 +134,7 @@ public class Board {
         }
         return leftNeighbor;
     }
+
     private Cell rightNeighbor(int rowNum, int colNum) {
         Cell rightNeighbor;
         if (colNum == columns - 1) {
@@ -141,6 +144,7 @@ public class Board {
         }
         return rightNeighbor;
     }
+
     private Cell bottomLeftNeighbor(int rowNum, int colNum) {
         Cell bottomLeftNeighbor;
         if (rowNum == rows - 1 && colNum == 0) {
@@ -154,6 +158,7 @@ public class Board {
         }
         return bottomLeftNeighbor;
     }
+
     private Cell bottomNeighbor(int rowNum, int colNum) {
         Cell bottomNeighbor;
         if (rowNum == rows - 1) {
@@ -163,6 +168,7 @@ public class Board {
         }
         return bottomNeighbor;
     }
+
     private Cell bottomRightNeighbor(int rowNum, int colNum) {
         Cell bottomRightNeighbor;
         if (rowNum == rows - 1 && colNum == columns - 1) {
@@ -176,6 +182,7 @@ public class Board {
         }
         return bottomRightNeighbor;
     }
+    
     private Cell getCell(int rowNum, int colNum) {
         ArrayList<Cell> rowList = grid.get(rowNum);
         Cell selectedCell = rowList.get(colNum);
