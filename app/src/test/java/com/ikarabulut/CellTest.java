@@ -21,6 +21,14 @@ class CellTest {
     }
 
     @Test
+    @DisplayName("When a cell dies, its alive status should be false")
+    void testDie() {
+        Cell cell = new Cell();
+        cell.die();
+        assertFalse(cell.checkIfAlive());
+    }
+
+    @Test
     @DisplayName("When no arguments are passed, and the cell is alive, it will return O")
     void testAliveToString() {
         Cell cell = new Cell();
