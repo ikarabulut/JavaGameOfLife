@@ -1,12 +1,28 @@
 package com.ikarabulut;
 
 public class Cell {
-    private boolean isAlive = false;
+    private boolean isAlive;
+    private String aliveSymbol;
+    private String deadSymbol;
+
+    public Cell(){
+        isAlive = false;
+        aliveSymbol = "O";
+        deadSymbol = "-";
+    }
 
     public boolean checkIfAlive() {
         return isAlive;
     }
     public void reviveMe() {
         isAlive = true;
+    }
+
+    public String toString() {
+        if (isAlive) {
+            return aliveSymbol;
+        } else {
+            return deadSymbol;
+        }
     }
 }
