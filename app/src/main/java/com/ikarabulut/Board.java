@@ -6,9 +6,9 @@ import java.util.Collections;
 
 public class Board {
 
-    public int rows;
-    public int columns;
-    public List<ArrayList> grid;
+    private int rows;
+    private int columns;
+    private List<ArrayList> grid;
 
     public Board() {
         rows = 10;
@@ -27,7 +27,8 @@ public class Board {
         for (int i = 0; i < columns; i++) {
             grid.add(new ArrayList<Cell>());
             for (int i2 = 0; i2 < rows; i2++) {
-                grid.get(i).add(new Cell());
+                ArrayList<Cell> currentRow = grid.get(i);
+                currentRow.add(new Cell());
             }
         }
         return grid;
