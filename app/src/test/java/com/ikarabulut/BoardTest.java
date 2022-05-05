@@ -114,17 +114,17 @@ class BoardTest {
         }
         @Test
         @DisplayName("A cell with 0 alive neighbor should return 0 alive neighbor")
-        void getAliveNeighborsCountOf() {
-            int numOfAliveNeighbors = board.getAliveNeighborsCountOf(1,1);
+        void getNumberOfAliveNeighbors() {
+            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1,1);
             assertEquals(numOfAliveNeighbors, 0);
         }
 
         @Test
         @DisplayName("A cell with 1 alive neighbor should return 1 alive neighbor")
-        void getAliveNeighborsCountOfTest1() {
+        void getNumberOfAliveNeighborsTest1() {
             board.setAliveAt(0,1);
 
-            int numOfAliveNeighbors = board.getAliveNeighborsCountOf(1, 1);
+            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1, 1);
 
             assertEquals(numOfAliveNeighbors, 1);
         }
@@ -135,7 +135,7 @@ class BoardTest {
             board.setAliveAt(0,1);
             board.setAliveAt(0,2);
 
-            int numOfAliveNeighbors = board.getAliveNeighborsCountOf(1,1);
+            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1,1);
 
             assertEquals(numOfAliveNeighbors, 2);
         }
@@ -145,7 +145,7 @@ class BoardTest {
         void getAliveNeighborsCountOfTest3() {
             setAliveBoard();
 
-            int numOfAliveNeighbors = board.getAliveNeighborsCountOf(1, 1);
+            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1, 1);
 
             assertEquals(numOfAliveNeighbors, 8);
         }
@@ -157,7 +157,7 @@ class BoardTest {
             setDeadBoard();
             largerBoard.setAliveAt(2, 0);
 
-            int numOfAliveNeighbors = largerBoard.getAliveNeighborsCountOf(2, 4);
+            int numOfAliveNeighbors = largerBoard.getNumberOfAliveNeighbors(2, 4);
 
             assertEquals(numOfAliveNeighbors, 1);
         }
@@ -169,7 +169,7 @@ class BoardTest {
             setDeadBoard();
             largerBoard.setAliveAt(0,0);
 
-            int numOfAliveNeighbors = largerBoard.getAliveNeighborsCountOf(4, 4);
+            int numOfAliveNeighbors = largerBoard.getNumberOfAliveNeighbors(4, 4);
 
             assertEquals(numOfAliveNeighbors, 1);
         }
@@ -181,7 +181,7 @@ class BoardTest {
             setDeadBoard();
             largerBoard.setAliveAt(4, 2);
 
-            int numOfAliveNeighbors = largerBoard.getAliveNeighborsCountOf(0, 2);
+            int numOfAliveNeighbors = largerBoard.getNumberOfAliveNeighbors(0, 2);
 
             assertEquals(numOfAliveNeighbors, 1);
         }
@@ -193,7 +193,7 @@ class BoardTest {
             setDeadBoard();
             largerBoard.setAliveAt(4, 0);
 
-            int numOfALiveNeighbors = largerBoard.getAliveNeighborsCountOf(0, 4);
+            int numOfALiveNeighbors = largerBoard.getNumberOfAliveNeighbors(0, 4);
 
             assertEquals(numOfALiveNeighbors, 1);
         }
