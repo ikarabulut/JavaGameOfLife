@@ -24,8 +24,11 @@ public class Board {
 
     public List<ArrayList> setGrid() {
         grid = new ArrayList<ArrayList>();
-        for (int i = 0; i < rows; i++) {
-            grid.add(new ArrayList<Cell>(Collections.nCopies(columns, new Cell())));
+        for (int i = 0; i < columns; i++) {
+            grid.add(new ArrayList<Cell>());
+            for (int i2 = 0; i2 < rows; i2++) {
+                grid.get(i).add(new Cell());
+            }
         }
         return grid;
     }
