@@ -90,10 +90,18 @@ class BoardTest {
     @Nested
     @DisplayName("Tests for getAliveNeighborsCountOf")
     class GetAliveNeighborsCountOf {
-        public void setDeadBoard() {
+        private void setDeadBoard() {
             for ( ArrayList<Cell> gridRow : board.getGrid()) {
                 for ( Cell cell : gridRow) {
                     cell.die();
+                }
+            }
+        }
+
+        private void setAliveBoard() {
+            for ( ArrayList<Cell> gridRow : board.getGrid()) {
+                for (Cell cell : gridRow) {
+                    cell.reviveMe();
                 }
             }
         }
@@ -135,14 +143,7 @@ class BoardTest {
         @Test
         @DisplayName("A cell with 8 alive neighbors should return 8 alive neighbors")
         void getAliveNeighborsCountOfTest3() {
-            board.setAliveAt(0,0);
-            board.setAliveAt(0,1);
-            board.setAliveAt(0,2);
-            board.setAliveAt(1,0);
-            board.setAliveAt(1,2);
-            board.setAliveAt(2,0);
-            board.setAliveAt(2,1);
-            board.setAliveAt(2,2);
+            setAliveBoard();
 
             int numOfAliveNeighbors = board.getAliveNeighborsCountOf(1, 1);
 
