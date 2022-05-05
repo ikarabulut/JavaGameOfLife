@@ -34,6 +34,18 @@ public class Board {
         return grid;
     }
 
+    public void setRandomGrid() {
+        for ( ArrayList<Cell> gridRow : grid) {
+            for ( Cell cell : gridRow) {
+                if (Math.random() > 0.5) {
+                    cell.die();
+                } else {
+                    cell.reviveMe();
+                }
+            }
+        }
+    }
+
     public List<ArrayList> getGrid() {
         return grid;
     }
