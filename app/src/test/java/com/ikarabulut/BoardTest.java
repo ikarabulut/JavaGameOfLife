@@ -15,7 +15,7 @@ class BoardTest {
 
     @Test
     @DisplayName("Given no arguments, a 10x10 board is created by default")
-    void setGridDefault() {
+    void setGrid_NoArgumentsPassed_10x10BoardIsGenerated() {
         Board board = new Board();
         List<ArrayList> generatedBoard = board.getGrid();
 
@@ -27,7 +27,7 @@ class BoardTest {
 
     @Test
     @DisplayName("Given the arguments of 20,20 are passed, a 20X20 board is created")
-    void setGridCustom() {
+    void setGrid_20x20ArgumentsArePassed_20x20BoardIsGenerated() {
         Board board = new Board(20,20);
         List<ArrayList> generatedBoard = board.getGrid();
 
@@ -39,7 +39,7 @@ class BoardTest {
 
     @Test
     @DisplayName("Given no arguments are provided, when a grid is created, all cells will be dead")
-    void setGridDefaultIsAllDead() {
+    void setGrid_NoArgumentsArePassed_BoardGeneratedIsAllDead() {
         Board board = new Board();
         List<ArrayList> generatedBoard = board.getGrid();
 
@@ -56,7 +56,7 @@ class BoardTest {
 
     @Test
     @DisplayName("Given a random board gets generated, then the board will have alive and dead cells")
-    void setRandomGrid() {
+    void setRandomGrid_WhenCalled_BoardWillUpdateToAliveAndDeadCells() {
         Board board = new Board();
         board.setRandomGrid();
         List<ArrayList> randomBoard = board.getGrid();
@@ -74,7 +74,7 @@ class BoardTest {
 
     @Test
     @DisplayName("The board can bring a cell to life at a given location")
-    void setAliveAt() {
+    void setAliveAt_When1_1IsPassed_ReturnsTheCellObjectAt1_1() {
         Board board = new Board();
 
         Boolean cellStatus = board.isCellAliveAt(1, 1);
@@ -89,7 +89,7 @@ class BoardTest {
 
     @Nested
     @DisplayName("Tests for getAliveNeighborsCountOf")
-    class GetAliveNeighborsCountOf {
+    class GetNumberOfAliveNeighbors {
         private void setDeadBoard() {
             for ( ArrayList<Cell> gridRow : board.getGrid()) {
                 for ( Cell cell : gridRow) {
@@ -114,14 +114,14 @@ class BoardTest {
         }
         @Test
         @DisplayName("A cell with 0 alive neighbor should return 0 alive neighbor")
-        void getNumberOfAliveNeighbors() {
+        void getNumberOfAliveNeighbors_WhenNoNeighborsAreAlive_Returns0() {
             int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1,1);
             assertEquals(numOfAliveNeighbors, 0);
         }
 
         @Test
         @DisplayName("A cell with 1 alive neighbor should return 1 alive neighbor")
-        void getNumberOfAliveNeighborsTest1() {
+        void getNumberOfAliveNeighbors_When1NeighborIsAlive_Returns1() {
             board.setAliveAt(0,1);
 
             int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1, 1);
@@ -131,7 +131,7 @@ class BoardTest {
 
         @Test
         @DisplayName("A cell with 2 alive neighbors should return 2 alive neighbors")
-        void getAliveNeighborsCountOfTest2() {
+        void getNumberOfAliveNeighbors_When2NeighborsAreAlive_Returns2() {
             board.setAliveAt(0,1);
             board.setAliveAt(0,2);
 
@@ -142,7 +142,7 @@ class BoardTest {
 
         @Test
         @DisplayName("A cell with 8 alive neighbors should return 8 alive neighbors")
-        void getAliveNeighborsCountOfTest3() {
+        void getNumberOfAliveNeighbors_WhenAllNeighborsAreAlive_Returns8() {
             setAliveBoard();
 
             int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1, 1);
@@ -152,7 +152,7 @@ class BoardTest {
 
         @Test
         @DisplayName("Should count neighbors that wrap from the right side of a row to the left side")
-        void getAliveNeighborsCountOfTest4() {
+        void getNumberOfAliveNeighbors_WhenCellIsOnRightEdge_ReturnsAliveCellsFromLeftEdge() {
             Board largerBoard = new Board(5,5);
             setDeadBoard();
             largerBoard.setAliveAt(2, 0);
@@ -164,7 +164,7 @@ class BoardTest {
 
         @Test
         @DisplayName("Should count neighbors that wrap diagonally from the top left to the bottom right of the board")
-        void getAliveNeighborsCountOfTest5() {
+        void getNumberOfAliveNeighbors_WhenCellIsBottomRightEdge_ReturnsAliveCellsFromTopRightEdge() {
             Board largerBoard = new Board(5, 5);
             setDeadBoard();
             largerBoard.setAliveAt(0,0);
@@ -176,7 +176,7 @@ class BoardTest {
 
         @Test
         @DisplayName("Should count neighbors that wrap from the top of a column to the bottom")
-        void getAliveNeighborsCountOfTest6() {
+        void getNumberOfAliveNeighbors_WhenCellIsOnBottomEdge_ReturnsAliveNeighborsFromTop() {
             Board largerBoard = new Board(5, 5);
             setDeadBoard();
             largerBoard.setAliveAt(4, 2);
@@ -188,7 +188,7 @@ class BoardTest {
 
         @Test
         @DisplayName("Should count neighbors that wrap from the top right of a column to the bottom left")
-        void getAliveNeighborsCountOfTest7() {
+        void getNumberOfAliveNeighbors_WhenCellIsTopRight_ReturnsAliveNeighborsFromBottomLeftEdge() {
             Board largerBoard = new Board(5, 5);
             setDeadBoard();
             largerBoard.setAliveAt(4, 0);
