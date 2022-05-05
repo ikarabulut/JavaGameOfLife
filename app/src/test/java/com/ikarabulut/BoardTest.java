@@ -37,11 +37,14 @@ class BoardTest {
     void setGridDefaultIsAllDead() {
         Board board = new Board();
         List<ArrayList> generatedBoard = board.getGrid();
-        for (ArrayList<Cell> boardRow : generatedBoard) {
+        boolean emptyBoard = true;
+        for (ArrayList<Cell> boardRow : generatedBoard)
             for (Cell cell : boardRow) {
-                assertFalse(cell.checkIfAlive());
+                if (cell.checkIfAlive() == true) {
+                    emptyBoard = false;
             }
         }
+        assertTrue(emptyBoard);
     }
 
 }
