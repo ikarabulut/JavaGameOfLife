@@ -182,7 +182,7 @@ public class Board {
         }
         return bottomRightNeighbor;
     }
-    
+
     private Cell getCell(int rowNum, int colNum) {
         ArrayList<Cell> rowList = grid.get(rowNum);
         Cell selectedCell = rowList.get(colNum);
