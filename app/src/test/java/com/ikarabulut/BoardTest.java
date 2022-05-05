@@ -151,7 +151,7 @@ class BoardTest {
         }
 
         @Test
-        @DisplayName("An alive cell on the left edge should register as an alive cell for a right edge cell")
+        @DisplayName("Should count neighbors that wrap from the right side of a row to the left side")
         void getAliveNeighborsCountOfTest4() {
             Board largerBoard = new Board(5,5);
             setDeadBoard();
@@ -163,7 +163,7 @@ class BoardTest {
         }
 
         @Test
-        @DisplayName("An alive cell on the top left edge should register as an alive cell for a bottom right edge")
+        @DisplayName("Should count neighbors that wrap diagonally from the top left to the bottom right of the board")
         void getAliveNeighborsCountOfTest5() {
             Board largerBoard = new Board(5, 5);
             setDeadBoard();
@@ -175,7 +175,7 @@ class BoardTest {
         }
 
         @Test
-        @DisplayName("An alive cell on the bottom edge should register as an alive cell for a top edge cell")
+        @DisplayName("Should count neighbors that wrap from the top of a column to the bottom")
         void getAliveNeighborsCountOfTest6() {
             Board largerBoard = new Board(5, 5);
             setDeadBoard();
@@ -187,7 +187,7 @@ class BoardTest {
         }
 
         @Test
-        @DisplayName("An alive cell on the bottom left edge should register as an alive cell for a top right cell")
+        @DisplayName("Should count neighbors that wrap from the top right of a column to the bottom left")
         void getAliveNeighborsCountOfTest7() {
             Board largerBoard = new Board(5, 5);
             setDeadBoard();
