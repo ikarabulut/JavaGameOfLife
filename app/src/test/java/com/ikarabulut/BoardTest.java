@@ -32,4 +32,16 @@ class BoardTest {
         );
     }
 
+    @Test
+    @DisplayName("Given no arguments are provided, when a grid is created, all cells will be dead")
+    void setGridDefaultIsAllDead() {
+        Board board = new Board();
+        List<ArrayList> generatedBoard = board.getGrid();
+        for (ArrayList<Cell> boardRow : generatedBoard) {
+            for (Cell cell : boardRow) {
+                assertFalse(cell.checkIfAlive());
+            }
+        }
+    }
+
 }
