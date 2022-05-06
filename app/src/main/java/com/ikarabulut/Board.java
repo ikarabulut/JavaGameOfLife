@@ -185,8 +185,7 @@ public class Board {
 
     private Cell getCell(int rowNum, int colNum) {
         ArrayList<Cell> rowList = board.get(rowNum);
-        Cell selectedCell = rowList.get(colNum);
-        return selectedCell;
+        return rowList.get(colNum);
     }
 
 }
