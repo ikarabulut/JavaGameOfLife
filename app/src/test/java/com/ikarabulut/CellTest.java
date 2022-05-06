@@ -9,7 +9,7 @@ class CellTest {
     @DisplayName("When a cell is dead, its alive status should be false")
     void testDeadCellStatus() {
         Cell cell = new Cell();
-        assertEquals(false, cell.checkIfAlive());
+        assertFalse(cell.checkIfAlive());
     }
 
     @Test
@@ -17,7 +17,7 @@ class CellTest {
     void testReviveMe() {
         Cell cell = new Cell();
         cell.reviveMe();
-        assertEquals(true, cell.checkIfAlive());
+        assertTrue(cell.checkIfAlive());
     }
 
     @Test
