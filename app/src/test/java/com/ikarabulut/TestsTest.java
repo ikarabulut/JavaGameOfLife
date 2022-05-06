@@ -36,4 +36,11 @@ class TestsTest {
         assertTrue(test);
     }
 
+    @Test
+    @DisplayName("When alive cell passes 4 alive neighbors, isOverpopulated will return false, meaning cell will die")
+    void isOverpopulated() {
+        boolean test = Tests.aliveCheck(4);
+        assertFalse(test);
+    }
+
 }

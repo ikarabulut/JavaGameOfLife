@@ -9,6 +9,8 @@ public class Tests {
             isUnderpopulated();
         } else if (aliveNeighborsCount == 2 || aliveNeighborsCount == 3) {
             isFertileLand();
+        } else {
+            isOverpopulated();
         }
         return aliveNextGeneration;
     }
@@ -19,6 +21,10 @@ public class Tests {
 
     private static void isFertileLand() {
         aliveNextGeneration = true;
+    }
+
+    private static void isOverpopulated() {
+        aliveNextGeneration = false;
     }
 
 }
