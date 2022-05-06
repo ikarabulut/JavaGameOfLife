@@ -197,11 +197,7 @@ class BoardTest {
 
             assertEquals(numOfALiveNeighbors, 1);
         }
-
-
-
-
+        
     }
-
 
 }
