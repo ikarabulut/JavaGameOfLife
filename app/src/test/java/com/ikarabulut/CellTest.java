@@ -9,15 +9,15 @@ class CellTest {
     @DisplayName("When a cell is dead, its alive status should be false")
     void testDeadCellStatus() {
         Cell cell = new Cell();
-        assertEquals(false, cell.checkIfAlive());
+        assertFalse(cell.checkIfAlive());
     }
 
     @Test
     @DisplayName("When a cell is revived, its alive status should be true")
     void testReviveMe() {
         Cell cell = new Cell();
-        cell.reviveMe();
-        assertEquals(true, cell.checkIfAlive());
+        cell.revive();
+        assertTrue(cell.checkIfAlive());
     }
 
     @Test
@@ -39,7 +39,7 @@ class CellTest {
     @DisplayName("When no arguments are passed, and the cell is alive, it will return -")
     void testDeadToString() {
         Cell cell = new Cell();
-        cell.reviveMe();
+        cell.revive();
         assertEquals("O", cell.toString());
     }
 }

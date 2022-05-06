@@ -14,7 +14,7 @@ public class Cell {
     public boolean checkIfAlive() {
         return isAlive;
     }
-    public void reviveMe() {
+    public void revive() {
         isAlive = true;
     }
 
