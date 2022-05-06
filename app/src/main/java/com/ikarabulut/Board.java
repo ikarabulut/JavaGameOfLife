@@ -95,7 +95,7 @@ public class Board {
         if (rowNum == 0 && colNum == 0) {
             topLeftNeighbor = getCell(rows - 1, columns - 1);
         } else if (rowNum == 0) {
-            topLeftNeighbor = getCell(rows - 1,colNum - 1);
+            topLeftNeighbor = getCell(rows - 1, colNum - 1);
         } else {
             topLeftNeighbor = getCell(rowNum - 1, colNum - 1);
         }
