@@ -28,7 +28,7 @@ class BoardTest {
     @Test
     @DisplayName("Given the arguments of 20,20 are passed, a 20X20 board is created")
     void setGridCustom() {
-        Board board = new Board(20,20);
+        Board board = new Board(20, 20);
         List<ArrayList> generatedBoard = board.getBoard();
 
         assertAll("custom grid size",
@@ -109,20 +109,20 @@ class BoardTest {
         public Board board;
         @BeforeEach
         void createBoard() {
-            board = new Board(3,3);
+            board = new Board(3, 3);
             setDeadBoard();
         }
         @Test
         @DisplayName("A cell with 0 alive neighbor should return 0 alive neighbor")
         void getNumberOfAliveNeighbors() {
-            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1,1);
+            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1, 1);
             assertEquals(numOfAliveNeighbors, 0);
         }
 
         @Test
         @DisplayName("A cell with 1 alive neighbor should return 1 alive neighbor")
         void getNumberOfAliveNeighborsTest1() {
-            board.setAliveAt(0,1);
+            board.setAliveAt(0, 1);
 
             int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1, 1);
 
@@ -132,10 +132,10 @@ class BoardTest {
         @Test
         @DisplayName("A cell with 2 alive neighbors should return 2 alive neighbors")
         void getAliveNeighborsCountOfTest2() {
-            board.setAliveAt(0,1);
-            board.setAliveAt(0,2);
+            board.setAliveAt(0, 1);
+            board.setAliveAt(0, 2);
 
-            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1,1);
+            int numOfAliveNeighbors = board.getNumberOfAliveNeighbors(1, 1);
 
             assertEquals(numOfAliveNeighbors, 2);
         }
@@ -153,7 +153,7 @@ class BoardTest {
         @Test
         @DisplayName("Should count neighbors that wrap from the right side of a row to the left side")
         void getAliveNeighborsCountOfTest4() {
-            Board largerBoard = new Board(5,5);
+            Board largerBoard = new Board(5, 5);
             setDeadBoard();
             largerBoard.setAliveAt(2, 0);
 
@@ -167,7 +167,7 @@ class BoardTest {
         void getAliveNeighborsCountOfTest5() {
             Board largerBoard = new Board(5, 5);
             setDeadBoard();
-            largerBoard.setAliveAt(0,0);
+            largerBoard.setAliveAt(0, 0);
 
             int numOfAliveNeighbors = largerBoard.getNumberOfAliveNeighbors(4, 4);
 
