@@ -74,6 +74,14 @@ public class Board {
         return numOfAliveNeighbors;
     }
 
+    public boolean willSurviveAt(int row, int col) {
+        if (isCellAliveAt(row, col)) {
+           return Tests.aliveCheck(getNumberOfAliveNeighbors(row, col));
+        } else {
+            return Tests.deadCheck(getNumberOfAliveNeighbors(row, col));
+        }
+    }
+
     // PRIVATE METHODS
     private List<Cell> getNeighborsOf(int rowNum, int colNum) {
         List<Cell> neighborsList = new ArrayList<>();

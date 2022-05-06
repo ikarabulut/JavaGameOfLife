@@ -88,6 +88,33 @@ class BoardTest {
     }
 
     @Nested
+    @DisplayName("willCellSurviveAt()")
+    class WillCellSurviveAt {
+        private void setDeadBoard() {
+            for ( ArrayList<Cell> boardRow : board.getBoard()) {
+                for ( Cell cell : boardRow) {
+                    cell.die();
+                }
+            }
+        }
+
+        public Board board;
+        @BeforeEach
+        void createBoard() {
+            board = new Board();
+        }
+
+        @Test
+        @DisplayName("Cell with less than 2 alive neighbors should not be alive next generation")
+        void willCellSurviveAt_LessThan2() {
+            setDeadBoard();
+            board.setAliveAt(0, 0);
+
+            assertFalse(board.willSurviveAt(0, 1));
+        }
+    }
+
+    @Nested
     @DisplayName("getNumberOfAliveNeighbors()")
     class GetNumberOfAliveNeighbors {
         private void setDeadBoard() {
