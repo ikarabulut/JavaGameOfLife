@@ -16,7 +16,7 @@ class CellTest {
     @DisplayName("When a cell is revived, its alive status should be true")
     void testReviveMe() {
         Cell cell = new Cell();
-        cell.reviveMe();
+        cell.revive();
         assertTrue(cell.checkIfAlive());
     }
 
@@ -39,7 +39,7 @@ class CellTest {
     @DisplayName("When no arguments are passed, and the cell is alive, it will return -")
     void testDeadToString() {
         Cell cell = new Cell();
-        cell.reviveMe();
+        cell.revive();
         assertEquals("O", cell.toString());
     }
 }
