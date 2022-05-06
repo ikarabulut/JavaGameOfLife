@@ -17,7 +17,7 @@ class BoardTest {
     @DisplayName("Given no arguments, a 10x10 board is created by default")
     void setGridDefault() {
         Board board = new Board();
-        List<ArrayList> generatedBoard = board.getGrid();
+        List<ArrayList> generatedBoard = board.getBoard();
 
         assertAll("default grid size",
                 () -> assertEquals(10, generatedBoard.size(), "10 rows are not being generated"),
@@ -29,7 +29,7 @@ class BoardTest {
     @DisplayName("Given the arguments of 20,20 are passed, a 20X20 board is created")
     void setGridCustom() {
         Board board = new Board(20,20);
-        List<ArrayList> generatedBoard = board.getGrid();
+        List<ArrayList> generatedBoard = board.getBoard();
 
         assertAll("custom grid size",
                 () -> assertEquals(20, generatedBoard.size(), "20 rows are not being generated"),
@@ -41,7 +41,7 @@ class BoardTest {
     @DisplayName("Given no arguments are provided, when a grid is created, all cells will be dead")
     void setGridDefaultIsAllDead() {
         Board board = new Board();
-        List<ArrayList> generatedBoard = board.getGrid();
+        List<ArrayList> generatedBoard = board.getBoard();
 
         boolean isDeadBoard = true;
         for (ArrayList<Cell> boardRow : generatedBoard)
@@ -58,8 +58,8 @@ class BoardTest {
     @DisplayName("Given a random board gets generated, then the board will have alive and dead cells")
     void setRandomGrid() {
         Board board = new Board();
-        board.setRandomGrid();
-        List<ArrayList> randomBoard = board.getGrid();
+        board.generateRandomBoard();
+        List<ArrayList> randomBoard = board.getBoard();
 
         boolean isDeadBoard = true;
         for (ArrayList<Cell> boardRow : randomBoard)
@@ -91,7 +91,7 @@ class BoardTest {
     @DisplayName("Tests for getAliveNeighborsCountOf")
     class GetAliveNeighborsCountOf {
         private void setDeadBoard() {
-            for ( ArrayList<Cell> gridRow : board.getGrid()) {
+            for ( ArrayList<Cell> gridRow : board.getBoard()) {
                 for ( Cell cell : gridRow) {
                     cell.die();
                 }
@@ -99,7 +99,7 @@ class BoardTest {
         }
 
         private void setAliveBoard() {
-            for ( ArrayList<Cell> gridRow : board.getGrid()) {
+            for ( ArrayList<Cell> gridRow : board.getBoard()) {
                 for (Cell cell : gridRow) {
                     cell.reviveMe();
                 }
@@ -205,4 +205,3 @@ class BoardTest {
 
 
 }
-

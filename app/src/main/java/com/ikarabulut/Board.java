@@ -9,36 +9,36 @@ public class Board {
     // CONSTRUCTORS
     private int rows;
     private int columns;
-    private List<ArrayList> grid;
+    private List<ArrayList> board;
 
     public Board() {
         rows = 10;
         columns = 10;
-        grid = setGrid();
+        board = generateDeadBoard();
     }
 
     public Board(int numOfRows, int numOfColumns) {
         rows = numOfRows;
         columns = numOfColumns;
-        grid = setGrid();
+        board = generateDeadBoard();
     }
 
     // PUBLIC METHODS
-    public List<ArrayList> setGrid() {
-        grid = new ArrayList<ArrayList>();
+    public List<ArrayList> generateDeadBoard() {
+        board = new ArrayList<ArrayList>();
         for (int i = 0; i < columns; i++) {
-            grid.add(new ArrayList<Cell>());
+            board.add(new ArrayList<Cell>());
             for (int i2 = 0; i2 < rows; i2++) {
-                ArrayList<Cell> currentRow = grid.get(i);
+                ArrayList<Cell> currentRow = board.get(i);
                 currentRow.add(new Cell());
             }
         }
-        return grid;
+        return board;
     }
 
-    public void setRandomGrid() {
-        for ( ArrayList<Cell> gridRow : grid) {
-            for ( Cell cell : gridRow) {
+    public void generateRandomBoard() {
+        for ( ArrayList<Cell> boardRow : board) {
+            for ( Cell cell : boardRow) {
                 if (Math.random() > 0.5) {
                     cell.die();
                 } else {
@@ -48,8 +48,8 @@ public class Board {
         }
     }
 
-    public List<ArrayList> getGrid() {
-        return grid;
+    public List<ArrayList> getBoard() {
+        return board;
     }
 
     public void setAliveAt(int rowNum, int colNum) {
@@ -184,7 +184,7 @@ public class Board {
     }
 
     private Cell getCell(int rowNum, int colNum) {
-        ArrayList<Cell> rowList = grid.get(rowNum);
+        ArrayList<Cell> rowList = board.get(rowNum);
         Cell selectedCell = rowList.get(colNum);
         return selectedCell;
     }
