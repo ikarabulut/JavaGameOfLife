@@ -29,4 +29,11 @@ class TestsTest {
         assertTrue(test);
     }
 
+    @Test
+    @DisplayName("When alive cell passes 3 alive neighbors, isFertileLand will return true, meaning cell will survive")
+    void isFertileLand_3() {
+        boolean test = Tests.aliveCheck(3);
+        assertTrue(test);
+    }
+
 }
