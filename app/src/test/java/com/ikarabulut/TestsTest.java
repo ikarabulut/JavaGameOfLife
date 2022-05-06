@@ -43,4 +43,18 @@ class TestsTest {
         assertFalse(test);
     }
 
+    @Test
+    @DisplayName("When dead cell passes 3 alive neighbors, isFertileLand will return true, meaning cell will survive")
+    void isFertileLand_ForDeadCell() {
+        boolean test = Tests.deadCheck(3);
+        assertTrue(test);
+    }
+
+    @Test
+    @DisplayName("When a dead cell passes anything other than 3 alive neighbors, false will return, meaning cell stays dead")
+    void deadCheck_StaysFalse() {
+        boolean test = Tests.deadCheck(1);
+        assertFalse(test);
+    }
+
 }

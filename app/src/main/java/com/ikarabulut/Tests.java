@@ -15,6 +15,13 @@ public class Tests {
         return aliveNextGeneration;
     }
 
+    public static boolean deadCheck(int aliveNeighborsCount) {
+        if (aliveNeighborsCount == 3) {
+            isFertileLand();
+        } else { aliveNextGeneration = false; }
+        return aliveNextGeneration;
+    }
+
     private static void isUnderpopulated() {
         aliveNextGeneration = false;
     }
