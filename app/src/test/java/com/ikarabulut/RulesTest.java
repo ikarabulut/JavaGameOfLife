@@ -14,46 +14,46 @@ import static org.junit.jupiter.api.Assertions.*;
 //4. If a dead cell has exactly three living neighbors, it comes to
 //   life in the next generation.
 
-class TestsTest {
+class RulesTest {
     @Test
     @DisplayName("When alive cell passes less than 2 alive neighbors, underpopulated will return false, meaning cell will die")
     void isUnderpopulated() {
-        boolean test = Tests.aliveCheck(0);
+        boolean test = Rules.aliveCheck(0);
         assertFalse(test);
     }
 
     @Test
     @DisplayName("When alive cell passes 2 alive neighbors, isFertileLand will return true, meaning cell will survive")
     void isFertileLand() {
-        boolean test = Tests.aliveCheck(2);
+        boolean test = Rules.aliveCheck(2);
         assertTrue(test);
     }
 
     @Test
     @DisplayName("When alive cell passes 3 alive neighbors, isFertileLand will return true, meaning cell will survive")
     void isFertileLand_3() {
-        boolean test = Tests.aliveCheck(3);
+        boolean test = Rules.aliveCheck(3);
         assertTrue(test);
     }
 
     @Test
     @DisplayName("When alive cell passes 4 alive neighbors, isOverpopulated will return false, meaning cell will die")
     void isOverpopulated() {
-        boolean test = Tests.aliveCheck(4);
+        boolean test = Rules.aliveCheck(4);
         assertFalse(test);
     }
 
     @Test
     @DisplayName("When dead cell passes 3 alive neighbors, isFertileLand will return true, meaning cell will survive")
     void isFertileLand_ForDeadCell() {
-        boolean test = Tests.deadCheck(3);
+        boolean test = Rules.deadCheck(3);
         assertTrue(test);
     }
 
     @Test
     @DisplayName("When a dead cell passes anything other than 3 alive neighbors, false will return, meaning cell stays dead")
     void deadCheck_StaysFalse() {
-        boolean test = Tests.deadCheck(1);
+        boolean test = Rules.deadCheck(1);
         assertFalse(test);
     }
 

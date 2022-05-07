@@ -2,7 +2,6 @@ package com.ikarabulut;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Board {
 
@@ -76,9 +75,9 @@ public class Board {
 
     public boolean willSurviveAt(int row, int col) {
         if (isCellAliveAt(row, col)) {
-           return Tests.aliveCheck(getNumberOfAliveNeighbors(row, col));
+           return Rules.aliveCheck(getNumberOfAliveNeighbors(row, col));
         } else {
-            return Tests.deadCheck(getNumberOfAliveNeighbors(row, col));
+            return Rules.deadCheck(getNumberOfAliveNeighbors(row, col));
         }
     }
 

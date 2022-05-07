@@ -1,6 +1,6 @@
 package com.ikarabulut;
 
-public class Tests {
+public class Rules {
 
     private static boolean aliveNextGeneration;
 
