@@ -82,6 +82,21 @@ public class Board {
         }
     }
 
+    public void nextGeneration() {
+        prepareEvolution();
+
+        for ( ArrayList<Cell> boardRow : board) {
+            for ( Cell cell : boardRow) {
+                if (cell.getAliveNextGeneration()) {
+                    cell.revive();
+                } else {
+                    cell.die();
+                }
+            }
+        }
+
+    }
+
     // PRIVATE METHODS
     private List<Cell> getNeighborsOf(int rowNum, int colNum) {
         List<Cell> neighborsList = new ArrayList<>();
@@ -196,6 +211,14 @@ public class Board {
     private Cell getCell(int rowNum, int colNum) {
         ArrayList<Cell> rowList = board.get(rowNum);
         return rowList.get(colNum);
+    }
+
+    private void prepareEvolution() {
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
+                willSurviveAt(row, column);
+            }
+        }
     }
 
 }
