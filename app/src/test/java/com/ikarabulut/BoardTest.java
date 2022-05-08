@@ -329,6 +329,26 @@ class BoardTest {
             assertTrue(isDeadBoard);
 
         }
+        @Test
+        @DisplayName("A board with one fertile area, should return a board with alive cells")
+        void nextGeneration_OneFertile_WillKeepAliveCells() {
+            boolean isDeadBoard = true;
+            board.setAliveAt(0, 0);
+            board.setAliveAt(0, 1);
+            board.setAliveAt(1, 0);
+            board.setAliveAt(1, 1);
+
+            board.nextGeneration();
+            for (ArrayList<Cell> boardRow : board.getBoard()) {
+                for (Cell cell : boardRow) {
+                    if (cell.checkIfAlive()) {
+                        isDeadBoard = false;
+                    }
+                }
+            }
+            
+            assertFalse(isDeadBoard);
+        }
     }
 
 }
