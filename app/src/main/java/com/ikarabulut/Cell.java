@@ -27,6 +27,10 @@ public class Cell {
         return aliveNextGeneration = willSurvive;
     }
 
+    public boolean getAliveNextGeneration() {
+        return aliveNextGeneration;
+    }
+
     public String toString() {
         if (isAlive) {
             return aliveSymbol;
