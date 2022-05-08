@@ -2,6 +2,7 @@ package com.ikarabulut;
 
 public class Cell {
     private boolean isAlive;
+    private boolean aliveNextGeneration;
     private String aliveSymbol;
     private String deadSymbol;
 
@@ -20,6 +21,10 @@ public class Cell {
 
     public void die() {
         isAlive = false;
+    }
+
+    public boolean setAliveNextGeneration(boolean willSurvive) {
+        return aliveNextGeneration = willSurvive;
     }
 
     public String toString() {
