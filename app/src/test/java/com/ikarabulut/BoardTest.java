@@ -283,7 +283,37 @@ class BoardTest {
 
             assertEquals(numOfALiveNeighbors, 1);
         }
-        
+
+    }
+
+    @Nested
+    @DisplayName("nextGeneration()")
+    class NextGeneration {
+        Board board = new Board();
+        private void setAliveBoard() {
+            for ( ArrayList<Cell> boardRow : board.getBoard()) {
+                for (Cell cell : boardRow) {
+                    cell.revive();
+                }
+            }
+        }
+        @Test
+        @DisplayName("A fully alive board should return a fully dead board")
+        void nextGeneration_AllAlive_WillBeAllDead() {
+            setAliveBoard();
+
+            board.nextGeneration();
+            boolean isDeadBoard = true;
+            for (ArrayList<Cell> boardRow : board.getBoard()) {
+                for (Cell cell : boardRow) {
+                    if (cell.checkIfAlive()) {
+                        isDeadBoard = false;
+                    }
+                }
+            }
+            assertTrue(isDeadBoard);
+
+        }
     }
 
 }
