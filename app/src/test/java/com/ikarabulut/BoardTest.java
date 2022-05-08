@@ -314,6 +314,21 @@ class BoardTest {
             assertTrue(isDeadBoard);
 
         }
+        @Test
+        @DisplayName("A fully dead board, should remain fully dead in next generation")
+        void nextGeneration_AllDead_WillBeAllDead() {
+            board.nextGeneration();
+            boolean isDeadBoard = true;
+            for (ArrayList<Cell> boardRow : board.getBoard()) {
+                for (Cell cell : boardRow) {
+                    if (cell.checkIfAlive()) {
+                        isDeadBoard = false;
+                    }
+                }
+            }
+            assertTrue(isDeadBoard);
+
+        }
     }
 
 }
