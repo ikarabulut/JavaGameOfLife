@@ -103,6 +103,8 @@ public class Board {
             topLeftNeighbor = getCell(rows - 1, columns - 1);
         } else if (rowNum == 0) {
             topLeftNeighbor = getCell(rows - 1, colNum - 1);
+        } else if (colNum == 0) {
+            topLeftNeighbor = getCell(rowNum - 1, columns - 1);
         } else {
             topLeftNeighbor = getCell(rowNum - 1, colNum - 1);
         }
