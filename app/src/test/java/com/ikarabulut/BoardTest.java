@@ -346,7 +346,7 @@ class BoardTest {
                     }
                 }
             }
-            
+
             assertFalse(isDeadBoard);
         }
     }
