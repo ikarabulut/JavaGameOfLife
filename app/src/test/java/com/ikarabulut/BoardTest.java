@@ -162,7 +162,7 @@ class BoardTest {
         }
 
         @Test
-        @DisplayName("Dead Cell with anything other than 3 alive neighbors should be dead next generation")
+        @DisplayName("Dead Cell with 2 alive neighbors should be dead next generation")
         void willCellSurviveAt_DeadWith2() {
             setDeadBoard();
             board.setAliveAt(0, 0);
