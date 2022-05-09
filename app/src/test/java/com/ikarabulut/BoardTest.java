@@ -88,6 +88,91 @@ class BoardTest {
     }
 
     @Nested
+    @DisplayName("willCellSurviveAt()")
+    class WillCellSurviveAt {
+        private void setDeadBoard() {
+            for ( ArrayList<Cell> boardRow : board.getBoard()) {
+                for ( Cell cell : boardRow) {
+                    cell.die();
+                }
+            }
+        }
+
+        public Board board;
+        @BeforeEach
+        void createBoard() {
+            board = new Board();
+        }
+
+        @Test
+        @DisplayName("Alive Cell with less than 2 alive neighbors should not be alive next generation")
+        void willCellSurviveAt_LessThan2() {
+            setDeadBoard();
+            board.setAliveAt(0, 1);
+            board.setAliveAt(0, 0);
+
+            assertFalse(board.willSurviveAt(0, 1));
+        }
+
+        @Test
+        @DisplayName("Alive Cell with 2 alive neighbors should be alive next generation")
+        void willCellSurviveAt_With2() {
+            setDeadBoard();
+            board.setAliveAt(0, 1);
+            board.setAliveAt(0, 0);
+            board.setAliveAt(1, 0);
+
+            assertTrue(board.willSurviveAt(0, 1));
+        }
+
+        @Test
+        @DisplayName("Alive Cell with 3 alive neighbors should be alive next generation")
+        void willCellSurviveAt_With3() {
+            setDeadBoard();
+            board.setAliveAt(0, 1);
+            board.setAliveAt(0, 0);
+            board.setAliveAt(1, 0);
+            board.setAliveAt(0, 2);
+
+            assertTrue(board.willSurviveAt(0, 1));
+        }
+
+        @Test
+        @DisplayName("Alive Cell with 4 alive neighbors should be dead next generation")
+        void willCellSurviveAt_With4() {
+            setDeadBoard();
+            board.setAliveAt(0, 1);
+            board.setAliveAt(0, 0);
+            board.setAliveAt(1, 0);
+            board.setAliveAt(0, 2);
+            board.setAliveAt(1, 2);
+
+            assertFalse(board.willSurviveAt(0, 1));
+        }
+
+        @Test
+        @DisplayName("Dead Cell with 3 alive neighbors should be alive next generation")
+        void willCellSurviveAt_DeadWith3() {
+            setDeadBoard();
+            board.setAliveAt(0, 0);
+            board.setAliveAt(1, 0);
+            board.setAliveAt(0, 2);
+
+            assertTrue(board.willSurviveAt(0, 1));
+        }
+
+        @Test
+        @DisplayName("Dead Cell with 2 alive neighbors should be dead next generation")
+        void willCellSurviveAt_DeadWith2() {
+            setDeadBoard();
+            board.setAliveAt(0, 0);
+            board.setAliveAt(1, 0);
+
+            assertFalse(board.willSurviveAt(0, 1));
+        }
+    }
+
+    @Nested
     @DisplayName("getNumberOfAliveNeighbors()")
     class GetNumberOfAliveNeighbors {
         private void setDeadBoard() {

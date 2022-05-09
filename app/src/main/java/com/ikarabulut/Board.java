@@ -2,7 +2,6 @@ package com.ikarabulut;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Board {
 
@@ -74,6 +73,14 @@ public class Board {
         return numOfAliveNeighbors;
     }
 
+    public boolean willSurviveAt(int row, int col) {
+        if (isCellAliveAt(row, col)) {
+           return Rules.aliveCheck(getNumberOfAliveNeighbors(row, col));
+        } else {
+            return Rules.deadCheck(getNumberOfAliveNeighbors(row, col));
+        }
+    }
+
     // PRIVATE METHODS
     private List<Cell> getNeighborsOf(int rowNum, int colNum) {
         List<Cell> neighborsList = new ArrayList<>();
@@ -96,6 +103,8 @@ public class Board {
             topLeftNeighbor = getCell(rows - 1, columns - 1);
         } else if (rowNum == 0) {
             topLeftNeighbor = getCell(rows - 1, colNum - 1);
+        } else if (colNum == 0) {
+            topLeftNeighbor = getCell(rowNum - 1, columns - 1);
         } else {
             topLeftNeighbor = getCell(rowNum - 1, colNum - 1);
         }
