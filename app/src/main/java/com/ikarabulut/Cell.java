@@ -2,7 +2,7 @@ package com.ikarabulut;
 
 public class Cell {
     private boolean isAlive;
-    private boolean aliveNextGeneration;
+    private boolean isAliveNextGeneration;
     private String aliveSymbol;
     private String deadSymbol;
 
@@ -24,11 +24,11 @@ public class Cell {
     }
 
     public boolean setAliveNextGeneration(boolean willSurvive) {
-        return aliveNextGeneration = willSurvive;
+        return isAliveNextGeneration = willSurvive;
     }
 
     public boolean getAliveNextGeneration() {
-        return aliveNextGeneration;
+        return isAliveNextGeneration;
     }
 
     public String toString() {
