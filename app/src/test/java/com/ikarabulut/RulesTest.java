@@ -16,42 +16,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RulesTest {
     @Test
-    @DisplayName("When alive cell passes less than 2 alive neighbors, underpopulated will return false, meaning cell will die")
+    @DisplayName("When 0 is passed to aliveCheck, false will return, meaning cell will die")
     void isUnderpopulated() {
         boolean test = Rules.aliveCheck(0);
         assertFalse(test);
     }
 
     @Test
-    @DisplayName("When alive cell passes 2 alive neighbors, isFertileLand will return true, meaning cell will survive")
+    @DisplayName("When 2 is passed to AliveCheck, True will return, meaning cell will survive")
     void isFertileLand() {
         boolean test = Rules.aliveCheck(2);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When alive cell passes 3 alive neighbors, isFertileLand will return true, meaning cell will survive")
+    @DisplayName("When 3 is passed to aliveCheck, True will return, meaning cell will survive")
     void isFertileLand_3() {
         boolean test = Rules.aliveCheck(3);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When alive cell passes 4 alive neighbors, isOverpopulated will return false, meaning cell will die")
+    @DisplayName("When 4 is passed to aliveCheck, False will return, meaning cell will die")
     void isOverpopulated() {
         boolean test = Rules.aliveCheck(4);
         assertFalse(test);
     }
 
     @Test
-    @DisplayName("When dead cell passes 3 alive neighbors, isFertileLand will return true, meaning cell will survive")
+    @DisplayName("When 3 is passed to deadCheck, True will return, meaning cell will survive")
     void isFertileLand_ForDeadCell() {
         boolean test = Rules.deadCheck(3);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When a dead cell passes anything other than 3 alive neighbors, false will return, meaning cell stays dead")
+    @DisplayName("When 1 is passed to deadCheck, false will return, meaning cell stays dead")
     void deadCheck_StaysFalse() {
         boolean test = Rules.deadCheck(1);
         assertFalse(test);
