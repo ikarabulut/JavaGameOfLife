@@ -74,6 +74,7 @@ public class Board {
     }
 
     public boolean willSurviveAt(int row, int col) {
+        Cell cell = getCell(row, col);
         if (isCellAliveAt(row, col)) {
            return Rules.aliveCheck(getNumberOfAliveNeighbors(row, col));
         } else {
