@@ -2,7 +2,7 @@ package com.ikarabulut;
 
 public class Rules {
 
-    private static boolean aliveNextGeneration;
+    private static boolean isAliveNextGeneration;
 
     public static boolean aliveCheck(int aliveNeighborsCount) {
         if (aliveNeighborsCount < 2) {
@@ -12,26 +12,26 @@ public class Rules {
         } else {
             isOverpopulated();
         }
-        return aliveNextGeneration;
+        return isAliveNextGeneration;
     }
 
     public static boolean deadCheck(int aliveNeighborsCount) {
         if (aliveNeighborsCount == 3) {
             isFertileLand();
-        } else { aliveNextGeneration = false; }
-        return aliveNextGeneration;
+        } else { isAliveNextGeneration = false; }
+        return isAliveNextGeneration;
     }
 
     private static void isUnderpopulated() {
-        aliveNextGeneration = false;
+        isAliveNextGeneration = false;
     }
 
     private static void isFertileLand() {
-        aliveNextGeneration = true;
+        isAliveNextGeneration = true;
     }
 
     private static void isOverpopulated() {
-        aliveNextGeneration = false;
+        isAliveNextGeneration = false;
     }
 
 }
