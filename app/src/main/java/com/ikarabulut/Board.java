@@ -25,10 +25,10 @@ public class Board {
     // PUBLIC METHODS
     public List<ArrayList> generateDeadBoard() {
         board = new ArrayList<ArrayList>();
-        for (int i = 0; i < columns; i++) {
+        for (int row = 0; row < rows; row++) {
             board.add(new ArrayList<Cell>());
-            for (int i2 = 0; i2 < rows; i2++) {
-                ArrayList<Cell> currentRow = board.get(i);
+            for (int column = 0; column < columns; column++) {
+                ArrayList<Cell> currentRow = board.get(row);
                 currentRow.add(new Cell());
             }
         }
@@ -51,19 +51,19 @@ public class Board {
         return board;
     }
 
-    public void setAliveAt(int rowNum, int colNum) {
-        Cell selectedCell = getCell(rowNum, colNum);
+    public void setAliveAt(int row, int col) {
+        Cell selectedCell = getCell(row, col);
         selectedCell.revive();
     }
 
-    public boolean isCellAliveAt(int rowNum, int colNum) {
-        Cell selectedCell = getCell(rowNum, colNum);
+    public boolean isCellAliveAt(int row, int col) {
+        Cell selectedCell = getCell(row, col);
         return selectedCell.checkIfAlive();
     }
 
-    public int getNumberOfAliveNeighbors(int rowNum, int colNum) {
+    public int getNumberOfAliveNeighbors(int row, int col) {
         int numOfAliveNeighbors = 0;
-        List<Cell> neighborsList = getNeighborsOf(rowNum, colNum);
+        List<Cell> neighborsList = getNeighborsOf(row, col);
 
         for (Cell neighbor : neighborsList) {
             if (neighbor.checkIfAlive()) {
@@ -98,120 +98,120 @@ public class Board {
     }
 
     // PRIVATE METHODS
-    private List<Cell> getNeighborsOf(int rowNum, int colNum) {
+    private List<Cell> getNeighborsOf(int row, int col) {
         List<Cell> neighborsList = new ArrayList<>();
 
-        neighborsList.add(topLeftNeighbor(rowNum, colNum));
-        neighborsList.add(topNeighbor(rowNum, colNum));
-        neighborsList.add(topRightNeighbor(rowNum, colNum));
-        neighborsList.add(leftNeighbor(rowNum, colNum));
-        neighborsList.add(rightNeighbor(rowNum, colNum));
-        neighborsList.add(bottomLeftNeighbor(rowNum, colNum));
-        neighborsList.add(bottomNeighbor(rowNum, colNum));
-        neighborsList.add(bottomRightNeighbor(rowNum, colNum));
+        neighborsList.add(topLeftNeighbor(row, col));
+        neighborsList.add(topNeighbor(row, col));
+        neighborsList.add(topRightNeighbor(row, col));
+        neighborsList.add(leftNeighbor(row, col));
+        neighborsList.add(rightNeighbor(row, col));
+        neighborsList.add(bottomLeftNeighbor(row, col));
+        neighborsList.add(bottomNeighbor(row, col));
+        neighborsList.add(bottomRightNeighbor(row, col));
 
         return neighborsList;
     }
 
-    private Cell topLeftNeighbor(int rowNum, int colNum) {
+    private Cell topLeftNeighbor(int row, int col) {
         Cell topLeftNeighbor;
-        if (rowNum == 0 && colNum == 0) {
+        if (row == 0 && col == 0) {
             topLeftNeighbor = getCell(rows - 1, columns - 1);
-        } else if (rowNum == 0) {
-            topLeftNeighbor = getCell(rows - 1, colNum - 1);
-        } else if (colNum == 0) {
-            topLeftNeighbor = getCell(rowNum - 1, columns - 1);
+        } else if (row == 0) {
+            topLeftNeighbor = getCell(rows - 1, col - 1);
+        } else if (col == 0) {
+            topLeftNeighbor = getCell(row - 1, columns - 1);
         } else {
-            topLeftNeighbor = getCell(rowNum - 1, colNum - 1);
+            topLeftNeighbor = getCell(row - 1, col - 1);
         }
         return topLeftNeighbor;
     }
 
-    private Cell topNeighbor(int rowNum, int colNum) {
+    private Cell topNeighbor(int row, int col) {
         Cell topNeighbor;
-        if (rowNum == 0) {
-            topNeighbor = getCell(rows - 1, colNum);
+        if (row == 0) {
+            topNeighbor = getCell(rows - 1, col);
         } else {
-            topNeighbor = getCell(rowNum - 1, colNum);
+            topNeighbor = getCell(row - 1, col);
         }
         return topNeighbor;
     }
 
-    private Cell topRightNeighbor(int rowNum, int colNum) {
+    private Cell topRightNeighbor(int row, int col) {
         Cell topRightNeighbor;
-        if (rowNum == 0 && colNum == columns - 1) {
+        if (row == 0 && col == columns - 1) {
             topRightNeighbor = getCell(rows - 1, 0);
-        } else if (colNum == columns - 1) {
-            topRightNeighbor = getCell(rowNum - 1, 0);
-        } else if (rowNum == 0) {
-            topRightNeighbor = getCell(rows - 1, colNum + 1);
+        } else if (col == columns - 1) {
+            topRightNeighbor = getCell(row - 1, 0);
+        } else if (row == 0) {
+            topRightNeighbor = getCell(rows - 1, col + 1);
         } else {
-            topRightNeighbor = getCell(rowNum - 1, colNum + 1);
+            topRightNeighbor = getCell(row - 1, col + 1);
         }
         return topRightNeighbor;
     }
 
-    private Cell leftNeighbor(int rowNum, int colNum) {
+    private Cell leftNeighbor(int row, int col) {
         Cell leftNeighbor;
-        if (colNum == 0) {
-            leftNeighbor = getCell(rowNum, columns - 1);
+        if (col == 0) {
+            leftNeighbor = getCell(row, columns - 1);
         } else {
-            leftNeighbor = getCell(rowNum, colNum - 1);
+            leftNeighbor = getCell(row, col - 1);
         }
         return leftNeighbor;
     }
 
-    private Cell rightNeighbor(int rowNum, int colNum) {
+    private Cell rightNeighbor(int row, int col) {
         Cell rightNeighbor;
-        if (colNum == columns - 1) {
-            rightNeighbor = getCell(rowNum, 0);
+        if (col == columns - 1) {
+            rightNeighbor = getCell(row, 0);
         } else {
-            rightNeighbor = getCell(rowNum, colNum + 1);
+            rightNeighbor = getCell(row, col + 1);
         }
         return rightNeighbor;
     }
 
-    private Cell bottomLeftNeighbor(int rowNum, int colNum) {
+    private Cell bottomLeftNeighbor(int row, int col) {
         Cell bottomLeftNeighbor;
-        if (rowNum == rows - 1 && colNum == 0) {
+        if (row == rows - 1 && col == 0) {
             bottomLeftNeighbor = getCell(0, columns - 1);
-        } else if (rowNum == rows - 1) {
-            bottomLeftNeighbor = getCell(0, colNum - 1);
-        } else if (colNum == 0) {
-            bottomLeftNeighbor = getCell(rowNum + 1, columns - 1);
+        } else if (row == rows - 1) {
+            bottomLeftNeighbor = getCell(0, col - 1);
+        } else if (col == 0) {
+            bottomLeftNeighbor = getCell(row + 1, columns - 1);
         } else {
-            bottomLeftNeighbor = getCell(rowNum + 1, colNum - 1);
+            bottomLeftNeighbor = getCell(row + 1, col - 1);
         }
         return bottomLeftNeighbor;
     }
 
-    private Cell bottomNeighbor(int rowNum, int colNum) {
+    private Cell bottomNeighbor(int row, int col) {
         Cell bottomNeighbor;
-        if (rowNum == rows - 1) {
-            bottomNeighbor = getCell(0, colNum);
+        if (row == rows - 1) {
+            bottomNeighbor = getCell(0, col);
         } else {
-            bottomNeighbor = getCell(rowNum + 1, colNum);
+            bottomNeighbor = getCell(row + 1, col);
         }
         return bottomNeighbor;
     }
 
-    private Cell bottomRightNeighbor(int rowNum, int colNum) {
+    private Cell bottomRightNeighbor(int row, int col) {
         Cell bottomRightNeighbor;
-        if (rowNum == rows - 1 && colNum == columns - 1) {
+        if (row == rows - 1 && col == columns - 1) {
             bottomRightNeighbor = getCell(0, 0);
-        } else if (colNum == columns - 1) {
-            bottomRightNeighbor = getCell(rowNum + 1, 0);
-        } else if (rowNum == rows - 1) {
-            bottomRightNeighbor = getCell(0, colNum + 1);
+        } else if (col == columns - 1) {
+            bottomRightNeighbor = getCell(row + 1, 0);
+        } else if (row == rows - 1) {
+            bottomRightNeighbor = getCell(0, col + 1);
         } else {
-            bottomRightNeighbor = getCell(rowNum + 1, colNum + 1);
+            bottomRightNeighbor = getCell(row + 1, col + 1);
         }
         return bottomRightNeighbor;
     }
 
-    private Cell getCell(int rowNum, int colNum) {
-        ArrayList<Cell> rowList = board.get(rowNum);
-        return rowList.get(colNum);
+    private Cell getCell(int row, int col) {
+        ArrayList<Cell> rowList = board.get(row);
+        return rowList.get(col);
     }
 
     private void prepareEvolution() {
