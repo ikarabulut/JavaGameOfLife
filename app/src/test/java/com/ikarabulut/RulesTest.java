@@ -16,44 +16,44 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RulesTest {
     @Test
-    @DisplayName("When 0 is passed to aliveCheck, false will return, meaning cell will die")
+    @DisplayName("When 0, and true is passed to determineFate, false will return, meaning cell will die")
     void aliveCheck_0Passed() {
-        boolean test = Rules.aliveCheck(0);
+        boolean test = Rules.determineFate(0, true);
         assertFalse(test);
     }
 
     @Test
-    @DisplayName("When 2 is passed to AliveCheck, True will return, meaning cell will survive")
+    @DisplayName("When 2 and true is passed to determineFate, True will return, meaning cell will survive")
     void aliveCheck_2Passed() {
-        boolean test = Rules.aliveCheck(2);
+        boolean test = Rules.determineFate(2, true);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When 3 is passed to aliveCheck, True will return, meaning cell will survive")
+    @DisplayName("When 3 and true is passed to determineFate, True will return, meaning cell will survive")
     void aliveCheck_3Passed() {
-        boolean test = Rules.aliveCheck(3);
+        boolean test = Rules.determineFate(3, true);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When 4 is passed to aliveCheck, False will return, meaning cell will die")
+    @DisplayName("When 4 and true is passed to determineFate, False will return, meaning cell will die")
     void aliveCheck_4Passed() {
-        boolean test = Rules.aliveCheck(4);
+        boolean test = Rules.determineFate(4, true);
         assertFalse(test);
     }
 
     @Test
-    @DisplayName("When 3 is passed to deadCheck, True will return, meaning cell will survive")
+    @DisplayName("When 3 and false is passed to determineFate, True will return, meaning cell will survive")
     void deadCheck_3Passed() {
-        boolean test = Rules.deadCheck(3);
+        boolean test = Rules.determineFate(3, true);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When 1 is passed to deadCheck, false will return, meaning cell stays dead")
+    @DisplayName("When 1 and false is passed to determineFate, false will return, meaning cell stays dead")
     void deadCheck_1Passed() {
-        boolean test = Rules.deadCheck(1);
+        boolean test = Rules.determineFate(1, true);
         assertFalse(test);
     }
 

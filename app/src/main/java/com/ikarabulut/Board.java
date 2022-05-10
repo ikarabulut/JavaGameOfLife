@@ -75,11 +75,8 @@ public class Board {
 
     public boolean willSurviveAt(int row, int col) {
         Cell cell = getCell(row, col);
-        if (isCellAliveAt(row, col)) {
-            return cell.setAliveNextGeneration(Rules.aliveCheck(getNumberOfAliveNeighbors(row, col)));
-        } else {
-            return cell.setAliveNextGeneration(Rules.deadCheck(getNumberOfAliveNeighbors(row, col)));
-        }
+        boolean cellStatus = cell.checkIfAlive();
+        return cell.setAliveNextGeneration(Rules.determineFate(getNumberOfAliveNeighbors(row, col), cellStatus));
     }
 
     public void nextGeneration() {
