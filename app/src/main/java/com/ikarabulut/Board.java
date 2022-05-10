@@ -36,8 +36,8 @@ public class Board {
     }
 
     public void generateRandomBoard() {
-        for ( ArrayList<Cell> boardRow : board) {
-            for ( Cell cell : boardRow) {
+        for (ArrayList<Cell> boardRow : board) {
+            for (Cell cell : boardRow) {
                 if (Math.random() > 0.5) {
                     cell.die();
                 } else {
@@ -85,8 +85,8 @@ public class Board {
     public void nextGeneration() {
         prepareEvolution();
 
-        for ( ArrayList<Cell> boardRow : board) {
-            for ( Cell cell : boardRow) {
+        for (ArrayList<Cell> boardRow : board) {
+            for (Cell cell : boardRow) {
                 if (cell.getAliveNextGeneration()) {
                     cell.revive();
                 } else {
@@ -126,6 +126,7 @@ public class Board {
         }
         return topLeftNeighbor;
     }
+
     private Cell topNeighbor(int rowNum, int colNum) {
         Cell topNeighbor;
         if (rowNum == 0) {
