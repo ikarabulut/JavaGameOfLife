@@ -12,6 +12,12 @@ public class Cell {
         deadSymbol = "-";
     }
 
+    public Cell(boolean isAlive){
+        this.isAlive = isAlive;
+        aliveSymbol = "O";
+        deadSymbol = "-";
+    }
+
     public boolean checkIfAlive() {
         return isAlive;
     }
