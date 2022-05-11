@@ -20,12 +20,8 @@ public class Cell {
     public boolean checkIfAlive() {
         return isAlive;
     }
-    public void revive() {
-        isAlive = true;
-    }
-
-    public void die() {
-        isAlive = false;
+    public void setIsAlive(boolean aliveStatus) {
+        isAlive = aliveStatus;
     }
 
     public String toString() {

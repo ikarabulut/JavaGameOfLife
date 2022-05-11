@@ -39,9 +39,9 @@ public class Board {
         for (ArrayList<Cell> boardRow : board) {
             for (Cell cell : boardRow) {
                 if (Math.random() > 0.5) {
-                    cell.die();
+                    cell.setIsAlive(true);
                 } else {
-                    cell.revive();
+                    cell.setIsAlive(false);
                 }
             }
         }
@@ -57,7 +57,7 @@ public class Board {
 
     public void setAliveAt(int row, int col) {
         Cell selectedCell = getCell(row, col);
-        selectedCell.revive();
+        selectedCell.setIsAlive(true);
     }
 
     public boolean isCellAliveAt(int row, int col) {

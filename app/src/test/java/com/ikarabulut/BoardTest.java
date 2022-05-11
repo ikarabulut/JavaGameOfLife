@@ -93,7 +93,7 @@ class BoardTest {
         private void setDeadBoard() {
             for ( ArrayList<Cell> boardRow : board.getBoard()) {
                 for ( Cell cell : boardRow) {
-                    cell.die();
+                    cell.setIsAlive(false);
                 }
             }
         }
@@ -101,7 +101,7 @@ class BoardTest {
         private void setAliveBoard() {
             for ( ArrayList<Cell> boardRow : board.getBoard()) {
                 for (Cell cell : boardRow) {
-                    cell.revive();
+                    cell.setIsAlive(true);
                 }
             }
         }
