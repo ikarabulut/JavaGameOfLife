@@ -51,6 +51,10 @@ public class Board {
         return board;
     }
 
+    public int getRows() { return rows; };
+
+    public int getColumns() { return columns; }
+
     public void setAliveAt(int row, int col) {
         Cell selectedCell = getCell(row, col);
         selectedCell.revive();
@@ -71,27 +75,6 @@ public class Board {
             }
         }
         return numOfAliveNeighbors;
-    }
-
-    public boolean willSurviveAt(int row, int col) {
-        Cell cell = getCell(row, col);
-        boolean cellStatus = cell.checkIfAlive();
-        return cell.setAliveNextGeneration(Rules.determineFate(getNumberOfAliveNeighbors(row, col), cellStatus));
-    }
-
-    public void nextGeneration() {
-        prepareEvolution();
-
-        for (ArrayList<Cell> boardRow : board) {
-            for (Cell cell : boardRow) {
-                if (cell.getAliveNextGeneration()) {
-                    cell.revive();
-                } else {
-                    cell.die();
-                }
-            }
-        }
-
     }
 
     // PRIVATE METHODS
@@ -209,14 +192,6 @@ public class Board {
     private Cell getCell(int row, int col) {
         ArrayList<Cell> rowList = board.get(row);
         return rowList.get(col);
-    }
-
-    private void prepareEvolution() {
-        for (int row = 0; row < rows; row++) {
-            for (int column = 0; column < columns; column++) {
-                willSurviveAt(row, column);
-            }
-        }
     }
 
 }
