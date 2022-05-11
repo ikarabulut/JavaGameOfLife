@@ -24,15 +24,15 @@ public class Board {
 
     // PUBLIC METHODS
     public List<ArrayList> generateDeadBoard() {
-        board = new ArrayList<ArrayList>();
+        List<ArrayList> generatedBoard = new ArrayList<>();
         for (int row = 0; row < rows; row++) {
-            board.add(new ArrayList<Cell>());
+            generatedBoard.add(new ArrayList<Cell>());
             for (int column = 0; column < columns; column++) {
-                ArrayList<Cell> currentRow = board.get(row);
+                ArrayList<Cell> currentRow = generatedBoard.get(row);
                 currentRow.add(new Cell());
             }
         }
-        return board;
+        return generatedBoard;
     }
 
     public void generateRandomBoard() {
