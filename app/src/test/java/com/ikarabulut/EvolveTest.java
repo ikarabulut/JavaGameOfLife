@@ -22,6 +22,19 @@ class EvolveTest {
         return generatedBoard;
     }
 
+    public List<ArrayList> generateAliveBoardHelper() {
+        List<ArrayList> generatedBoard = new ArrayList<>();
+        for (int row = 0; row < 10; row++) {
+            generatedBoard.add(new ArrayList<Cell>());
+            for (int column = 0; column < 10; column++) {
+                ArrayList<Cell> currentRow = generatedBoard.get(row);
+                currentRow.add(new Cell(true));
+            }
+        }
+
+        return generatedBoard;
+    }
+
     @Test
     @DisplayName("Given a board of dead cells is passed, a new board of dead cells should be generated")
     void generateNextBoard() {
@@ -40,4 +53,21 @@ class EvolveTest {
         assertTrue(isDeadBoard);
     }
 
+    @Test
+    @DisplayName("Given a board of alive cells is passed, a new board of dead cells should be generated")
+    void generateNextBoard_AllAlive() {
+        Evolve evolve = new Evolve();
+        List<ArrayList> evolvingBoard = generateAliveBoardHelper();
+        List<ArrayList> evolvedBoard = evolve.generateNextBoard(evolvingBoard);
+
+        boolean isDeadBoard = true;
+        for (ArrayList<Cell> boardRow : evolvedBoard) {
+            for (Cell cell : boardRow) {
+                if (cell.checkIfAlive()) {
+                    isDeadBoard = false;
+                }
+            }
+        }
+        assertTrue(isDeadBoard);
+    }
 }
