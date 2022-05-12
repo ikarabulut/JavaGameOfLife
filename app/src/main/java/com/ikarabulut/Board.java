@@ -51,6 +51,8 @@ public class Board {
         return board;
     }
 
+    public void setBoard(List<ArrayList> newBoard) { board = newBoard; }
+
     public int getRows() { return rows; };
 
     public int getColumns() { return columns; }
@@ -58,6 +60,11 @@ public class Board {
     public void setAliveAt(int row, int col) {
         Cell selectedCell = getCell(row, col);
         selectedCell.setIsAlive(true);
+    }
+
+    public void setDeadAt(int row, int col) {
+        Cell selectedCell = getCell(row, col);
+        selectedCell.setIsAlive(false);
     }
 
     public boolean isCellAliveAt(int row, int col) {
