@@ -4,7 +4,7 @@ public class Rules {
 
     private static boolean isAliveNextGeneration;
 
-    public static boolean determineFate(int aliveNeighborsCount, boolean isAlive) {
+    public static boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive) {
         if (aliveNeighborsCount < 2) {
             isUnderpopulated();
         } else if (isAlive && aliveNeighborsCount == 2 || aliveNeighborsCount == 3) {

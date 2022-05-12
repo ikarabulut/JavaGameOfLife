@@ -18,42 +18,42 @@ class RulesTest {
     @Test
     @DisplayName("When 0, and true is passed to determineFate, false will return, meaning cell will die")
     void aliveCheck_0Passed() {
-        boolean test = Rules.determineFate(0, true);
+        boolean test = Rules.willBeAliveNextGeneration(0, true);
         assertFalse(test);
     }
 
     @Test
     @DisplayName("When 2 and true is passed to determineFate, True will return, meaning cell will survive")
     void aliveCheck_2Passed() {
-        boolean test = Rules.determineFate(2, true);
+        boolean test = Rules.willBeAliveNextGeneration(2, true);
         assertTrue(test);
     }
 
     @Test
     @DisplayName("When 3 and true is passed to determineFate, True will return, meaning cell will survive")
     void aliveCheck_3Passed() {
-        boolean test = Rules.determineFate(3, true);
+        boolean test = Rules.willBeAliveNextGeneration(3, true);
         assertTrue(test);
     }
 
     @Test
     @DisplayName("When 4 and true is passed to determineFate, False will return, meaning cell will die")
     void aliveCheck_4Passed() {
-        boolean test = Rules.determineFate(4, true);
+        boolean test = Rules.willBeAliveNextGeneration(4, true);
         assertFalse(test);
     }
 
     @Test
     @DisplayName("When 3 and false is passed to determineFate, True will return, meaning cell will survive")
     void deadCheck_3Passed() {
-        boolean test = Rules.determineFate(3, true);
+        boolean test = Rules.willBeAliveNextGeneration(3, true);
         assertTrue(test);
     }
 
     @Test
     @DisplayName("When 1 and false is passed to determineFate, false will return, meaning cell stays dead")
     void deadCheck_1Passed() {
-        boolean test = Rules.determineFate(1, true);
+        boolean test = Rules.willBeAliveNextGeneration(1, true);
         assertFalse(test);
     }
 

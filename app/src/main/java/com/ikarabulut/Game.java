@@ -22,8 +22,8 @@ public class Game {
             for (int column = 0; column < nextBoard.getColumns(); column++) {
                 int currentCellNumOfAliveNeighbors = currentBoard.getNumberOfAliveNeighbors(row, column);
                 boolean currentCellIsAlive = currentBoard.isCellAliveAt(row, column);
-                boolean nextGenerationStatus = Rules.determineFate(currentCellNumOfAliveNeighbors, currentCellIsAlive);
-                if (nextGenerationStatus) {
+                boolean willBeAliveNextGeneration = Rules.willBeAliveNextGeneration(currentCellNumOfAliveNeighbors, currentCellIsAlive);
+                if (willBeAliveNextGeneration) {
                     nextBoard.setAliveAt(row, column);
                 } else {
                     nextBoard.setDeadAt(row, column);
