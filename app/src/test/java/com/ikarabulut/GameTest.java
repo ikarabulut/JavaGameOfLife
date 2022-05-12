@@ -45,7 +45,7 @@ class GameTest {
         game.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : game.getNextBoard()) {
+        for (ArrayList<Cell> boardRow : board.getBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
                     isDeadBoard = false;
@@ -65,10 +65,9 @@ class GameTest {
         game.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : game.getNextBoard()) {
+        for (ArrayList<Cell> boardRow : board.getBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
-                    isDeadBoard = false;
                 }
             }
         }

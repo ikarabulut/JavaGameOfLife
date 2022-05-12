@@ -5,32 +5,24 @@ import java.util.List;
 
 public class Game {
     private Board currentBoard;
-    private Board nextBoard;
 
     public Game(Board board) {
         currentBoard = board;
-        nextBoard = new Board(board.getRows(), board.getColumns());
-
-    }
-
-    public List<ArrayList> getNextBoard() {
-        return this.nextBoard.getBoard();
     }
 
     public void generateNextBoard() {
+        List<ArrayList> nextBoard = new ArrayList<>();
         for (int row = 0; row < currentBoard.getRows(); row++) {
-            for (int column = 0; column < nextBoard.getColumns(); column++) {
+            nextBoard.add(new ArrayList<Cell>());
+            for (int column = 0; column < currentBoard.getColumns(); column++) {
+                ArrayList<Cell> currentRow = nextBoard.get(row);
                 int currentCellNumOfAliveNeighbors = currentBoard.getNumberOfAliveNeighbors(row, column);
                 boolean currentCellIsAlive = currentBoard.isCellAliveAt(row, column);
                 boolean willBeAliveNextGeneration = Rules.willBeAliveNextGeneration(currentCellNumOfAliveNeighbors, currentCellIsAlive);
-                if (willBeAliveNextGeneration) {
-                    nextBoard.setAliveAt(row, column);
-                } else {
-                    nextBoard.setDeadAt(row, column);
-                }
+                currentRow.add(new Cell(willBeAliveNextGeneration));
             }
         }
-        currentBoard.setBoard(nextBoard.getBoard());
+        currentBoard.setBoard(nextBoard);
     }
 
 }
