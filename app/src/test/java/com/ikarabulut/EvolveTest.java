@@ -36,14 +36,16 @@ class EvolveTest {
     }
 
     @Test
-    @DisplayName("Given a board of dead cells is passed, a new board of dead cells should be generated")
+    @DisplayName("Given a a Board with a fully dead board is passed, a new board of dead cells should be generated")
     void generateNextBoard() {
-        Evolve evolve = new Evolve();
-        List<ArrayList> evolvingBoard = generateDeadBoardHelper();
-        List<ArrayList> evolvedBoard = evolve.generateNextBoard(evolvingBoard);
+        Board board = new Board();
+        board.setBoard(generateDeadBoardHelper());
+        Evolve evolve = new Evolve(board);
+
+        evolve.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : evolvedBoard) {
+        for (ArrayList<Cell> boardRow : evolve.getNextBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
                     isDeadBoard = false;
@@ -54,14 +56,16 @@ class EvolveTest {
     }
 
     @Test
-    @DisplayName("Given a board of alive cells is passed, a new board of dead cells should be generated")
+    @DisplayName("Given a Board with a board of alive cells is passed, a new board of dead cells should be generated")
     void generateNextBoard_AllAlive() {
-        Evolve evolve = new Evolve();
-        List<ArrayList> evolvingBoard = generateAliveBoardHelper();
-        List<ArrayList> evolvedBoard = evolve.generateNextBoard(evolvingBoard);
+        Board board = new Board();
+        board.setBoard(generateAliveBoardHelper());
+        Evolve evolve = new Evolve(board);
+
+        evolve.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : evolvedBoard) {
+        for (ArrayList<Cell> boardRow : evolve.getNextBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
                     isDeadBoard = false;
