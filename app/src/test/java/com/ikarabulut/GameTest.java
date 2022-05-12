@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EvolveTest {
+class GameTest {
     public List<ArrayList> generateDeadBoardHelper() {
         List<ArrayList> generatedBoard = new ArrayList<>();
         for (int row = 0; row < 10; row++) {
@@ -40,12 +40,12 @@ class EvolveTest {
     void generateNextBoard() {
         Board board = new Board();
         board.setBoard(generateDeadBoardHelper());
-        Evolve evolve = new Evolve(board);
+        Game game = new Game(board);
 
-        evolve.generateNextBoard();
+        game.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : evolve.getNextBoard()) {
+        for (ArrayList<Cell> boardRow : game.getNextBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
                     isDeadBoard = false;
@@ -60,12 +60,12 @@ class EvolveTest {
     void generateNextBoard_AllAlive() {
         Board board = new Board();
         board.setBoard(generateAliveBoardHelper());
-        Evolve evolve = new Evolve(board);
+        Game game = new Game(board);
 
-        evolve.generateNextBoard();
+        game.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : evolve.getNextBoard()) {
+        for (ArrayList<Cell> boardRow : game.getNextBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
                     isDeadBoard = false;

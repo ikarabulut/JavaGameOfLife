@@ -3,13 +3,14 @@ package com.ikarabulut;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Evolve {
-    private Board board;
+public class Game {
+    private Board currentBoard;
     private Board nextBoard;
 
-    public Evolve(Board board) {
-        this.board = board;
-        this.nextBoard = new Board(board.getRows(), board.getColumns());
+    public Game(Board board) {
+        currentBoard = board;
+        nextBoard = new Board(board.getRows(), board.getColumns());
+
     }
 
     public List<ArrayList> getNextBoard() {
@@ -17,10 +18,10 @@ public class Evolve {
     }
 
     public void generateNextBoard() {
-        for (int row = 0; row < board.getRows(); row++) {
-            for (int column = 0; column < board.getColumns(); column++) {
-                int currentCellNumOfAliveNeighbors = board.getNumberOfAliveNeighbors(row, column);
-                boolean currentCellIsAlive = board.isCellAliveAt(row, column);
+        for (int row = 0; row < currentBoard.getRows(); row++) {
+            for (int column = 0; column < nextBoard.getColumns(); column++) {
+                int currentCellNumOfAliveNeighbors = currentBoard.getNumberOfAliveNeighbors(row, column);
+                boolean currentCellIsAlive = currentBoard.isCellAliveAt(row, column);
                 boolean nextGenerationStatus = Rules.determineFate(currentCellNumOfAliveNeighbors, currentCellIsAlive);
                 if (nextGenerationStatus) {
                     nextBoard.setAliveAt(row, column);
@@ -29,6 +30,7 @@ public class Evolve {
                 }
             }
         }
+        currentBoard.setBoard(nextBoard.getBoard());
     }
 
 }
