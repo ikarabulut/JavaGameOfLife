@@ -4,21 +4,14 @@ public class Rules {
 
     private static boolean isAliveNextGeneration;
 
-    public static boolean aliveCheck(int aliveNeighborsCount) {
+    public static boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive) {
         if (aliveNeighborsCount < 2) {
             isUnderpopulated();
-        } else if (aliveNeighborsCount == 2 || aliveNeighborsCount == 3) {
+        } else if (isAlive && aliveNeighborsCount == 2 || aliveNeighborsCount == 3) {
             isFertileLand();
         } else {
             isOverpopulated();
         }
-        return isAliveNextGeneration;
-    }
-
-    public static boolean deadCheck(int aliveNeighborsCount) {
-        if (aliveNeighborsCount == 3) {
-            isFertileLand();
-        } else { isAliveNextGeneration = false; }
         return isAliveNextGeneration;
     }
 

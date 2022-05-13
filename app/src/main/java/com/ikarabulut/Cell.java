@@ -11,15 +11,17 @@ public class Cell {
         deadSymbol = "-";
     }
 
+    public Cell(boolean isAlive){
+        this.isAlive = isAlive;
+        aliveSymbol = "O";
+        deadSymbol = "-";
+    }
+
     public boolean checkIfAlive() {
         return isAlive;
     }
-    public void revive() {
-        isAlive = true;
-    }
-
-    public void die() {
-        isAlive = false;
+    public void setIsAlive(boolean aliveStatus) {
+        isAlive = aliveStatus;
     }
 
     public String toString() {
