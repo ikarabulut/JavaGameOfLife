@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 class GameTest {
     public List<ArrayList> generateDeadBoardHelper() {
@@ -40,9 +39,8 @@ class GameTest {
     @DisplayName("Given a a Board with a fully dead board is passed, a new board of dead cells should be generated")
     void generateNextBoard() {
         Board board = new Board();
-        GameSettings gameSettings = new GameSettings();
         board.setBoard(generateDeadBoardHelper());
-        Game game = new Game(board, gameSettings);
+        Game game = new Game(board);
 
         game.generateNextBoard();
 
@@ -61,9 +59,8 @@ class GameTest {
     @DisplayName("Given a Board with a board of alive cells is passed, a new board of dead cells should be generated")
     void generateNextBoard_AllAlive() {
         Board board = new Board();
-        GameSettings gameSettings = new GameSettings();
         board.setBoard(generateAliveBoardHelper());
-        Game game = new Game(board, gameSettings);
+        Game game = new Game(board);
 
         game.generateNextBoard();
 
@@ -95,8 +92,7 @@ class GameTest {
     @DisplayName("Given a board with a square Then the square should still be alive in the next generation")
     void generateNextWorldWithSquare() {
         Board board = createBoardWithSquare();
-        GameSettings gameSettings = new GameSettings();
-        Game game = new Game(board, gameSettings);
+        Game game = new Game(board);
 
         Board result = game.generateNextBoard();
 
@@ -104,16 +100,5 @@ class GameTest {
         assertTrue(result.isCellAliveAt(1, 0));
         assertTrue(result.isCellAliveAt(0, 1));
         assertTrue(result.isCellAliveAt(1, 1));
-    }
-
-    @Test
-    @DisplayName("If the game is initialized with 25 evolutions, then generateNextBoard() should run 25 times")
-    void startGenerationLoops() {
-        Board board = new Board();
-        GameSettings gameSettings = new GameSettings();
-        Game game = new Game(board, gameSettings);
-        Game mockedGame = mock(game);
-
-        
     }
 }
