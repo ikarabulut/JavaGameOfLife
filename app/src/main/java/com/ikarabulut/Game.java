@@ -2,9 +2,19 @@ package com.ikarabulut;
 
 public class Game {
     private Board board;
+    private GameSettings gameSettings;
 
-    public Game(Board theBoard) {
+    public Game(Board theBoard, GameSettings theGameSettings) {
         board = theBoard;
+        gameSettings = theGameSettings;
+    }
+
+    public void startGenerationLoops() {
+        int numOfEvolutions = gameSettings.getEvolutions();
+
+        for (int i=0; i<numOfEvolutions; i++) {
+            generateNextBoard();
+        }
     }
 
     public Board generateNextBoard() {
