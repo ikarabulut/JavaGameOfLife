@@ -196,7 +196,7 @@ public class Board {
         return bottomRightNeighbor;
     }
 
-    private Cell getCell(int row, int col) {
+    public Cell getCell(int row, int col) {
         ArrayList<Cell> rowList = board.get(row);
         return rowList.get(col);
     }

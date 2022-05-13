@@ -73,4 +73,32 @@ class GameTest {
         }
         assertTrue(isDeadBoard);
     }
+
+    private Board createBoardWithSquare() {
+        int rows = 5;
+        int columns = 5;
+
+        Board board = new Board(rows, columns);
+        board.setAliveAt(0, 0);
+        board.setAliveAt(1, 0);
+        board.setAliveAt(0, 1);
+        board.setAliveAt(1, 1);
+
+        return board;
+    }
+
+
+    @Test
+    @DisplayName("Given a board with a square Then the square should still be alive in the next generation")
+    void generateNextWorldWithSquare() {
+        Board board = createBoardWithSquare();
+        Game game = new Game(board);
+
+        Board result = game.generateNextBoard();
+
+        assertTrue(result.isCellAliveAt(0, 0));
+        assertTrue(result.isCellAliveAt(1, 0));
+        assertTrue(result.isCellAliveAt(0, 1));
+        assertTrue(result.isCellAliveAt(1, 1));
+    }
 }
