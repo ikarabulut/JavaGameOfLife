@@ -19,9 +19,9 @@ repositories {
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 
-    // Use JUnit test framework & Hamcrest
+    // Use JUnit test framework & Mockito for test doubles
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation "org.mockito:mockito-core:3.+"
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:30.1.1-jre'
