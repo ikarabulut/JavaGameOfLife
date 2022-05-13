@@ -16,44 +16,56 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RulesTest {
     @Test
-    @DisplayName("When 0, and true is passed to determineFate, false will return, meaning cell will die")
+    @DisplayName("When an Alive Cell has 0 alive neighbors passed, it is underpopulated, meaning it will not survive for the next generation")
     void aliveCheck_0Passed() {
-        boolean test = Rules.willBeAliveNextGeneration(0, true);
+        int numOfAliveNeighborsPassed = 0;
+        boolean isAlive = true;
+        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertFalse(test);
     }
 
     @Test
-    @DisplayName("When 2 and true is passed to determineFate, True will return, meaning cell will survive")
+    @DisplayName("When an Alive Cell has 2 alive neighbors passed, it is on fertile land, meaning it will survive for the next generation")
     void aliveCheck_2Passed() {
-        boolean test = Rules.willBeAliveNextGeneration(2, true);
+        int numOfAliveNeighborsPassed = 2;
+        boolean isAlive = true;
+        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When 3 and true is passed to determineFate, True will return, meaning cell will survive")
+    @DisplayName("When an Alive Cell has 3 alive neighbors passed, it is on fertile land, meaning it will survive for the next generation")
     void aliveCheck_3Passed() {
-        boolean test = Rules.willBeAliveNextGeneration(3, true);
+        int numOfAliveNeighborsPassed = 3;
+        boolean isAlive = true;
+        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When 4 and true is passed to determineFate, False will return, meaning cell will die")
+    @DisplayName("When an Alive Cell has 4 alive neighbors passed, it is overpopulated, meaning it will not survive for the next generation")
     void aliveCheck_4Passed() {
-        boolean test = Rules.willBeAliveNextGeneration(4, true);
+        int numOfAliveNeighborsPassed = 4;
+        boolean isAlive = true;
+        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertFalse(test);
     }
 
     @Test
-    @DisplayName("When 3 and false is passed to determineFate, True will return, meaning cell will survive")
+    @DisplayName("When a Dead Cell has 3 alive neighbors passed, it is on revivable land, meaning it will come to life for the next generation")
     void deadCheck_3Passed() {
-        boolean test = Rules.willBeAliveNextGeneration(3, true);
+        int numOfAliveNeighborsPassed = 3;
+        boolean isAlive = false;
+        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertTrue(test);
     }
 
     @Test
-    @DisplayName("When 1 and false is passed to determineFate, false will return, meaning cell stays dead")
+    @DisplayName("When a Dead Cell has 1 alive neighbors passed, it is not on revivable land, meaning it will stay dead for the next generation")
     void deadCheck_1Passed() {
-        boolean test = Rules.willBeAliveNextGeneration(1, true);
+        int numOfAliveNeighborsPassed = 1;
+        boolean isAlive = false;
+        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertFalse(test);
     }
 
