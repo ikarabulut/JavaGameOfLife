@@ -1,28 +1,29 @@
 package com.ikarabulut;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Game {
-    private Board currentBoard;
+    private Board board;
 
-    public Game(Board board) {
-        currentBoard = board;
+    public Game(Board theBoard) {
+        board = theBoard;
     }
 
-    public void generateNextBoard() {
-        List<ArrayList> nextBoard = new ArrayList<>();
-        for (int row = 0; row < currentBoard.getRows(); row++) {
-            nextBoard.add(new ArrayList<Cell>());
-            for (int column = 0; column < currentBoard.getColumns(); column++) {
-                ArrayList<Cell> currentRow = nextBoard.get(row);
-                int currentCellNumOfAliveNeighbors = currentBoard.getNumberOfAliveNeighbors(row, column);
-                boolean currentCellIsAlive = currentBoard.isCellAliveAt(row, column);
-                boolean willBeAliveNextGeneration = Rules.willBeAliveNextGeneration(currentCellNumOfAliveNeighbors, currentCellIsAlive);
-                currentRow.add(new Cell(willBeAliveNextGeneration));
+    public Board generateNextBoard() {
+        int rows = board.getRows();
+        int columns = board.getColumns();
+        Board nextBoard = new Board(rows, columns);
+
+        for (int row=0; row<rows; row++) {
+            for (int column=0; column<columns; column++) {
+                Cell cell = board.getCell(row, column);
+                int aliveNeighbors = board.getNumberOfAliveNeighbors(row, column);
+                boolean isAliveNextGeneration = Rules.willBeAliveNextGeneration(aliveNeighbors, cell.checkIfAlive());
+                if (isAliveNextGeneration) {
+                    nextBoard.setAliveAt(row, column);
+                }
             }
         }
-        currentBoard.setBoard(nextBoard);
-    }
 
+        board = nextBoard;
+        return nextBoard;
+    }
 }
