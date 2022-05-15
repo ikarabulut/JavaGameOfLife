@@ -51,6 +51,7 @@ public class Board {
         return board;
     }
 
+    //TODO: Remove this, its not used
     public void setBoard(List<ArrayList> newBoard) { board = newBoard; }
 
     public int getRows() { return rows; };
@@ -196,6 +197,7 @@ public class Board {
         return bottomRightNeighbor;
     }
 
+    //TODO: Move this to the public methods
     public Cell getCell(int row, int col) {
         ArrayList<Cell> rowList = board.get(row);
         return rowList.get(col);
