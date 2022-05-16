@@ -6,6 +6,3 @@
 
 # Ignore Gradle build output directory
 build
-
-# Ignore App.java for now
-app/src/main/java/com/ikarabulut/App.java
