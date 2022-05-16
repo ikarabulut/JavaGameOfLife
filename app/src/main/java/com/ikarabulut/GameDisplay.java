@@ -1,5 +1,7 @@
 package com.ikarabulut;
 
+import java.util.Scanner;
+
 public class GameDisplay {
     private String welcomePrompt;
     private String gameSettingsPrompt;

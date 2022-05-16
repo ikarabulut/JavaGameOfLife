@@ -42,7 +42,7 @@ class GameTest {
         GameDisplay display = new GameDisplay();
         GameSettings gameSettings = new GameSettings("deleteThis", display);
         board.setBoard(generateDeadBoardHelper());
-        Game game = new Game(board, gameSettings);
+        Game game = new Game(gameSettings);
 
         game.generateNextBoard();
 
@@ -64,7 +64,7 @@ class GameTest {
         GameDisplay display = new GameDisplay();
         GameSettings gameSettings = new GameSettings("deleteThis", display);
         board.setBoard(generateAliveBoardHelper());
-        Game game = new Game(board, gameSettings);
+        Game game = new Game(gameSettings);
 
         game.generateNextBoard();
 
@@ -98,7 +98,7 @@ class GameTest {
         Board board = createBoardWithSquare();
         GameDisplay display = new GameDisplay();
         GameSettings gameSettings = new GameSettings("deleteThis", display);
-        Game game = new Game(board, gameSettings);
+        Game game = new Game(gameSettings);
 
         Board result = game.generateNextBoard();
 

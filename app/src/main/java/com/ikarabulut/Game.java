@@ -4,9 +4,14 @@ public class Game {
     private Board board;
     private GameSettings gameSettings;
 
-    public Game(Board theBoard, GameSettings theGameSettings) {
-        board = theBoard;
+    public Game(GameSettings theGameSettings) {
         gameSettings = theGameSettings;
+        board = new Board(gameSettings.getRows(), gameSettings.getColumns());
+    }
+
+    public Game(Board theBoard, GameSettings theGameSettings) {
+        gameSettings = theGameSettings;
+        board = theBoard;
     }
 
     public void startEvolutionLoops() {
@@ -18,8 +23,8 @@ public class Game {
     }
 
     public Board generateNextBoard() {
-        int rows = board.getRows();
-        int columns = board.getColumns();
+        int rows = gameSettings.getRows();
+        int columns = gameSettings.getColumns();
         Board nextBoard = new Board(rows, columns);
 
         for (int row=0; row<rows; row++) {

@@ -23,6 +23,14 @@ public class GameSettings {
         display = displayPrompts;
     }
 
+    public void getAllSettings() {
+        setEvolutions();
+        setRows();
+        setColumns();
+        setAliveSymbol();
+        setDeadSymbol();
+    }
+
     public void setEvolutions() {
         display.evolutionsPrompt();
         evolutions = inputs.nextInt();

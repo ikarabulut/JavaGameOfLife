@@ -54,7 +54,10 @@ public class Board {
     //TODO: Remove this, its not used
     public void setBoard(List<ArrayList> newBoard) { board = newBoard; }
 
+    //TODO: Remove this, it is used in game settings now
     public int getRows() { return rows; };
+
+    //TODO: Remove this, it is used in game settings now
 
     public int getColumns() { return columns; }
 
