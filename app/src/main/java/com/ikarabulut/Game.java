@@ -15,7 +15,7 @@ public class Game {
     public void startEvolutions() {
         int numOfEvolutions = gameSettings.getEvolutions();
 
-        for (int i=0; i==numOfEvolutions; i++) {
+        for (int i = 0; i <= numOfEvolutions; i++) {
             generateNextBoard();
             gameDisplay.displayBoard(board);
         }

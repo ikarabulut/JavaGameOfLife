@@ -9,17 +9,24 @@ public class GameSettings {
     private String aliveSymbol;
     private String deadSymbol;
 
-    private Scanner inputs;
+    private Scanner evolutionsInput = new Scanner(System.in);
+    private Scanner rowsInput = new Scanner(System.in);
+    private Scanner columnsInput = new Scanner(System.in);
+    private Scanner aliveSymbolInput = new Scanner(System.in);
+    private Scanner deadSymbolInput = new Scanner(System.in);
 
     private GameDisplay display;
 
     public GameSettings(GameDisplay displayPrompts) {
-        inputs = new Scanner(System.in);
         display = displayPrompts;
     }
 
     public GameSettings(String mockInput, GameDisplay displayPrompts) {
-        inputs = new Scanner(mockInput);
+        evolutionsInput = new Scanner(mockInput);
+        rowsInput = new Scanner(mockInput);
+        columnsInput = new Scanner(mockInput);
+        aliveSymbolInput = new Scanner(mockInput);
+        deadSymbolInput = new Scanner(mockInput);
         display = displayPrompts;
     }
 
@@ -33,27 +40,27 @@ public class GameSettings {
 
     public void setEvolutions() {
         display.evolutionsPrompt();
-        evolutions = inputs.nextInt();
+        evolutions = evolutionsInput.nextInt();
     }
 
     public void setRows() {
         display.rowsPrompt();
-        rows = inputs.nextInt();
+        rows = rowsInput.nextInt();
     }
 
     public void setColumns() {
         display.columnsPrompt();
-        columns = inputs.nextInt();
+        columns = columnsInput.nextInt();
     }
 
     public void setAliveSymbol() {
         display.aliveSymbolPrompt();
-        aliveSymbol = inputs.nextLine();
+        aliveSymbol = aliveSymbolInput.nextLine();
     }
 
     public void setDeadSymbol() {
         display.deadSymbolPrompt();
-        deadSymbol = inputs.nextLine();
+        deadSymbol = deadSymbolInput.nextLine();
     }
 
     public int getEvolutions() {

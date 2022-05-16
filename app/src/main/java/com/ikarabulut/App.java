@@ -1,5 +1,7 @@
 package com.ikarabulut;
 
+import java.util.ArrayList;
+
 public class App {
 
     public static void main(String[] args) {
@@ -7,8 +9,8 @@ public class App {
         GameSettings gameSettings = new GameSettings(gameDisplay);
         gameSettings.getAllSettings();
         Board theBoard = new Board(gameSettings.getRows(), gameSettings.getColumns());
-        Game theGame = new Game(theBoard, gameSettings, gameDisplay);
         theBoard.generateRandomBoard();
+        Game theGame = new Game(theBoard, gameSettings, gameDisplay);
         theGame.startEvolutions();
     }
 

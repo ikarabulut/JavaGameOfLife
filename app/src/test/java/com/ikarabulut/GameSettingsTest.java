@@ -12,6 +12,7 @@ class GameSettingsTest {
     void createGameDisplay() {
         displayPrompts = new GameDisplay();
     }
+
     @Test
     @DisplayName("When prompted for evolutions and 25 is passed, then row should be set to 25")
     void setEvolutions() {

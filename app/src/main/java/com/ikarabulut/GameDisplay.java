@@ -1,6 +1,7 @@
 package com.ikarabulut;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GameDisplay {
     private String welcomePrompt;
@@ -22,7 +23,8 @@ public class GameDisplay {
     }
 
     public void displayBoard(Board theBoard) {
-        for (ArrayList<ArrayList> row : theBoard.getBoard()) {
+        List<ArrayList> boardToDisplay = theBoard.getBoard();
+        for (List<ArrayList> row : boardToDisplay) {
             System.out.println(row);
         }
     }

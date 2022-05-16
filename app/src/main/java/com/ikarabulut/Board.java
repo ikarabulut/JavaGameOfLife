@@ -51,9 +51,6 @@ public class Board {
         return board;
     }
 
-    //TODO: Remove this, its not used
-    public void setBoard(List<ArrayList> newBoard) { board = newBoard; }
-
     public int getRows() { return rows; }
 
     public int getColumns() { return columns; }
