@@ -4,27 +4,26 @@ public class Game {
     private Board board;
     private GameSettings gameSettings;
 
-    public Game(GameSettings theGameSettings) {
-        gameSettings = theGameSettings;
-        board = new Board(gameSettings.getRows(), gameSettings.getColumns());
-    }
+    private GameDisplay gameDisplay;
 
-    public Game(Board theBoard, GameSettings theGameSettings) {
+    public Game(Board theBoard, GameSettings theGameSettings, GameDisplay theDisplay) {
         gameSettings = theGameSettings;
         board = theBoard;
+        gameDisplay = theDisplay;
     }
 
-    public void startEvolutionLoops() {
+    public void startEvolutions() {
         int numOfEvolutions = gameSettings.getEvolutions();
 
-        for (int i=0; i<numOfEvolutions; i++) {
+        for (int i=0; i==numOfEvolutions; i++) {
             generateNextBoard();
+            gameDisplay.displayBoard(board);
         }
     }
 
     public Board generateNextBoard() {
-        int rows = gameSettings.getRows();
-        int columns = gameSettings.getColumns();
+        int rows = board.getRows();
+        int columns = board.getColumns();
         Board nextBoard = new Board(rows, columns);
 
         for (int row=0; row<rows; row++) {

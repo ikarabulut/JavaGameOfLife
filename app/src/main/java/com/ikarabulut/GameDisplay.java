@@ -1,6 +1,6 @@
 package com.ikarabulut;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GameDisplay {
     private String welcomePrompt;
@@ -19,6 +19,12 @@ public class GameDisplay {
         setColumnsPrompt();
         setAliveSymbolPrompt();
         setDeadSymbolPrompt();
+    }
+
+    public void displayBoard(Board theBoard) {
+        for (ArrayList<ArrayList> row : theBoard.getBoard()) {
+            System.out.println(row);
+        }
     }
 
     public String welcomePrompt() {

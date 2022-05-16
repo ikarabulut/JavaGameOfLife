@@ -1,5 +1,6 @@
 package com.ikarabulut;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
+
+    private GameDisplay theDisplay;
+    private GameSettings theSettings;
+    @BeforeEach
+    void createDisplayAndSettings() {
+        theDisplay = new GameDisplay();
+        theSettings = new GameSettings(theDisplay);
+    }
     public List<ArrayList> generateDeadBoardHelper() {
         List<ArrayList> generatedBoard = new ArrayList<>();
         for (int row = 0; row < 10; row++) {
@@ -39,10 +48,9 @@ class GameTest {
     @DisplayName("Given a a Board with a fully dead board is passed, a new board of dead cells should be generated")
     void generateNextBoard() {
         Board board = new Board();
-        GameDisplay display = new GameDisplay();
-        GameSettings gameSettings = new GameSettings("deleteThis", display);
+        GameSettings gameSettings = new GameSettings("deleteThis", theDisplay);
         board.setBoard(generateDeadBoardHelper());
-        Game game = new Game(gameSettings);
+        Game game = new Game(board, gameSettings, theDisplay);
 
         game.generateNextBoard();
 
@@ -61,10 +69,9 @@ class GameTest {
     @DisplayName("Given a Board with a board of alive cells is passed, a new board of dead cells should be generated")
     void generateNextBoard_AllAlive() {
         Board board = new Board();
-        GameDisplay display = new GameDisplay();
-        GameSettings gameSettings = new GameSettings("deleteThis", display);
+        GameSettings gameSettings = new GameSettings("deleteThis", theDisplay);
         board.setBoard(generateAliveBoardHelper());
-        Game game = new Game(gameSettings);
+        Game game = new Game(board, gameSettings, theDisplay);
 
         game.generateNextBoard();
 
@@ -79,8 +86,8 @@ class GameTest {
     }
 
     private Board createBoardWithSquare() {
-        int rows = 5;
-        int columns = 5;
+        int rows = 10;
+        int columns = 10;
 
         Board board = new Board(rows, columns);
         board.setAliveAt(0, 0);
@@ -96,9 +103,8 @@ class GameTest {
     @DisplayName("Given a board with a square Then the square should still be alive in the next generation")
     void generateNextWorldWithSquare() {
         Board board = createBoardWithSquare();
-        GameDisplay display = new GameDisplay();
-        GameSettings gameSettings = new GameSettings("deleteThis", display);
-        Game game = new Game(gameSettings);
+        GameSettings gameSettings = new GameSettings("deleteThis", theDisplay);
+        Game game = new Game(board, gameSettings, theDisplay);
 
         Board result = game.generateNextBoard();
 

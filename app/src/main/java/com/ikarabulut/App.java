@@ -6,7 +6,10 @@ public class App {
         GameDisplay gameDisplay = new GameDisplay();
         GameSettings gameSettings = new GameSettings(gameDisplay);
         gameSettings.getAllSettings();
-        Game theGame = new Game(gameSettings);
+        Board theBoard = new Board(gameSettings.getRows(), gameSettings.getColumns());
+        Game theGame = new Game(theBoard, gameSettings, gameDisplay);
+        theBoard.generateRandomBoard();
+        theGame.startEvolutions();
     }
 
 }
