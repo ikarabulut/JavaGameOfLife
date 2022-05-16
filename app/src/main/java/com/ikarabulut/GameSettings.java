@@ -1,28 +1,71 @@
 package com.ikarabulut;
 
+import java.util.Scanner;
+
 public class GameSettings {
-        private int evolutions;
-        private int rows;
-        private int columns;
-        private int aliveSymbol;
-        private int deadSymbol;
+    private int evolutions;
+    private int rows;
+    private int columns;
+    private String aliveSymbol;
+    private String deadSymbol;
 
-        public GameSettings() {
-            evolutions = 25;
-            rows = 10;
-            columns = 10;
-            aliveSymbol = 1;
-            deadSymbol = 0;
-        }
+    private Scanner inputs;
 
-        public int getEvolutions() { return evolutions; }
+    private GameDisplay display;
 
-        public int getRows() { return rows; }
+    public GameSettings(GameDisplay displayPrompts) {
+        inputs = new Scanner(System.in);
+        display = displayPrompts;
+    }
 
-        public int getColumns() { return columns; }
+    public GameSettings(String mockInput, GameDisplay displayPrompts) {
+        inputs = new Scanner(mockInput);
+        display = displayPrompts;
+    }
 
-        public int getAliveSymbol() { return aliveSymbol; }
+    public void setEvolutions() {
+        display.evolutionsPrompt();
+        evolutions = inputs.nextInt();
+    }
 
-        public int getDeadSymbol() { return deadSymbol; }
+    public void setRows() {
+        display.rowsPrompt();
+        rows = inputs.nextInt();
+    }
+
+    public void setColumns() {
+        display.columnsPrompt();
+        columns = inputs.nextInt();
+    }
+
+    public void setAliveSymbol() {
+        display.aliveSymbolPrompt();
+        aliveSymbol = inputs.nextLine();
+    }
+
+    public void setDeadSymbol() {
+        display.deadSymbolPrompt();
+        deadSymbol = inputs.nextLine();
+    }
+
+    public int getEvolutions() {
+        return evolutions;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public String getAliveSymbol() {
+        return aliveSymbol;
+    }
+
+    public String getDeadSymbol() {
+        return deadSymbol;
+    }
 
 }

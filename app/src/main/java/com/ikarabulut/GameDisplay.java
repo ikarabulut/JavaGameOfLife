@@ -1,8 +1,6 @@
 package com.ikarabulut;
 
 public class GameDisplay {
-    private GameSettings gameSettings;
-    private Board gameBoard;
     private String welcomePrompt;
     private String gameSettingsPrompt;
     private String evolutionsPrompt;
@@ -21,31 +19,38 @@ public class GameDisplay {
         setDeadSymbolPrompt();
     }
 
-    public String getWelcomePrompt() {
+    public String welcomePrompt() {
+        System.out.println(welcomePrompt);
         return welcomePrompt;
     }
 
-    public String getGameSettingsPrompt() {
+    public String gameSettingsPrompt() {
+        System.out.println(gameSettingsPrompt);
         return gameSettingsPrompt;
     }
 
-    public String getEvolutionsPrompt() {
+    public String evolutionsPrompt() {
+        System.out.println(evolutionsPrompt);
         return evolutionsPrompt;
     }
 
-    public String getRowsPrompt() {
+    public String rowsPrompt() {
+        System.out.println(rowsPrompt);
         return rowsPrompt;
     }
 
-    public String getColumnsPrompt() {
+    public String columnsPrompt() {
+        System.out.println(columnsPrompt);
         return columnsPrompt;
     }
 
-    public String getAliveSymbolPrompt() {
+    public String aliveSymbolPrompt() {
+        System.out.println(aliveSymbolPrompt);
         return aliveSymbolPrompt;
     }
 
-    public String getDeadSymbolPrompt() {
+    public String deadSymbolPrompt() {
+        System.out.println(deadSymbolPrompt);
         return deadSymbolPrompt;
     }
 

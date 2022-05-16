@@ -12,13 +12,13 @@ class GameDisplayTest {
         GameDisplay gameDisplay = new GameDisplay();
 
         assertAll (
-                () -> assertNotNull(gameDisplay.getWelcomePrompt()),
-                () -> assertNotNull(gameDisplay.getGameSettingsPrompt()),
-                () -> assertNotNull(gameDisplay.getEvolutionsPrompt()),
-                () -> assertNotNull(gameDisplay.getRowsPrompt()),
-                () -> assertNotNull(gameDisplay.getColumnsPrompt()),
-                () -> assertNotNull(gameDisplay.getAliveSymbolPrompt()),
-                () -> assertNotNull(gameDisplay.getDeadSymbolPrompt())
+                () -> assertNotNull(gameDisplay.welcomePrompt()),
+                () -> assertNotNull(gameDisplay.gameSettingsPrompt()),
+                () -> assertNotNull(gameDisplay.evolutionsPrompt()),
+                () -> assertNotNull(gameDisplay.rowsPrompt()),
+                () -> assertNotNull(gameDisplay.columnsPrompt()),
+                () -> assertNotNull(gameDisplay.aliveSymbolPrompt()),
+                () -> assertNotNull(gameDisplay.deadSymbolPrompt())
         );
     }
 
