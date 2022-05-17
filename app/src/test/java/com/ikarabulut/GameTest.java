@@ -1,52 +1,50 @@
 package com.ikarabulut;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
-    public List<ArrayList> generateDeadBoardHelper() {
-        List<ArrayList> generatedBoard = new ArrayList<>();
-        for (int row = 0; row < 10; row++) {
-            generatedBoard.add(new ArrayList<Cell>());
-            for (int column = 0; column < 10; column++) {
-                ArrayList<Cell> currentRow = generatedBoard.get(row);
-                currentRow.add(new Cell());
-            }
-        }
 
-        return generatedBoard;
+    private GameDisplay theDisplay;
+    private GameSettings theSettings;
+
+    @BeforeEach
+    void createDisplayAndSettings() {
+        theDisplay = new GameDisplay();
+        theSettings = new GameSettings(theDisplay);
     }
 
-    public List<ArrayList> generateAliveBoardHelper() {
-        List<ArrayList> generatedBoard = new ArrayList<>();
-        for (int row = 0; row < 10; row++) {
-            generatedBoard.add(new ArrayList<Cell>());
-            for (int column = 0; column < 10; column++) {
-                ArrayList<Cell> currentRow = generatedBoard.get(row);
-                currentRow.add(new Cell(true));
+    public Board generateDeadBoardHelper() {
+        Board deadBoard = new Board();
+        deadBoard.generateDeadBoard();
+        return deadBoard;
+    }
+
+    public Board generateAliveBoardHelper() {
+        Board aliveBoard = new Board();
+        for (ArrayList<Cell> boardRow : aliveBoard.getBoard()) {
+            for (Cell cell : boardRow) {
+                cell.setIsAlive(true);
             }
         }
-
-        return generatedBoard;
+        return aliveBoard;
     }
 
     @Test
     @DisplayName("Given a a Board with a fully dead board is passed, a new board of dead cells should be generated")
     void generateNextBoard() {
-        Board board = new Board();
-        GameSettings gameSettings = new GameSettings();
-        board.setBoard(generateDeadBoardHelper());
-        Game game = new Game(board, gameSettings);
+        Board board = generateDeadBoardHelper();
+        Game game = new Game(board, theSettings, theDisplay);
 
-        game.generateNextBoard();
+        Board result = game.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : board.getBoard()) {
+        for (ArrayList<Cell> boardRow : result.getBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
                     isDeadBoard = false;
@@ -59,17 +57,16 @@ class GameTest {
     @Test
     @DisplayName("Given a Board with a board of alive cells is passed, a new board of dead cells should be generated")
     void generateNextBoard_AllAlive() {
-        Board board = new Board();
-        GameSettings gameSettings = new GameSettings();
-        board.setBoard(generateAliveBoardHelper());
-        Game game = new Game(board, gameSettings);
+        Board board = generateAliveBoardHelper();
+        Game game = new Game(board, theSettings, theDisplay);
 
-        game.generateNextBoard();
+        Board result = game.generateNextBoard();
 
         boolean isDeadBoard = true;
-        for (ArrayList<Cell> boardRow : board.getBoard()) {
+        for (ArrayList<Cell> boardRow : result.getBoard()) {
             for (Cell cell : boardRow) {
                 if (cell.checkIfAlive()) {
+                    isDeadBoard = false;
                 }
             }
         }
@@ -77,8 +74,8 @@ class GameTest {
     }
 
     private Board createBoardWithSquare() {
-        int rows = 5;
-        int columns = 5;
+        int rows = 10;
+        int columns = 10;
 
         Board board = new Board(rows, columns);
         board.setAliveAt(0, 0);
@@ -94,8 +91,7 @@ class GameTest {
     @DisplayName("Given a board with a square Then the square should still be alive in the next generation")
     void generateNextWorldWithSquare() {
         Board board = createBoardWithSquare();
-        GameSettings gameSettings = new GameSettings();
-        Game game = new Game(board, gameSettings);
+        Game game = new Game(board, theSettings, theDisplay);
 
         Board result = game.generateNextBoard();
 
@@ -104,4 +100,5 @@ class GameTest {
         assertTrue(result.isCellAliveAt(0, 1));
         assertTrue(result.isCellAliveAt(1, 1));
     }
+
 }

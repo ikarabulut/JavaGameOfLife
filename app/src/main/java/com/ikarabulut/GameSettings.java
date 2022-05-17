@@ -1,28 +1,77 @@
 package com.ikarabulut;
 
+import java.util.Scanner;
+
 public class GameSettings {
-        private int evolutions;
-        private int rows;
-        private int columns;
-        private int aliveSymbol;
-        private int deadSymbol;
+    private int evolutions = 25;
+    private int rows = 10;
+    private int columns = 10;
+    private String aliveSymbol = "x";
+    private String deadSymbol = "o";
 
-        public GameSettings() {
-            evolutions = 25;
-            rows = 10;
-            columns = 10;
-            aliveSymbol = 1;
-            deadSymbol = 0;
-        }
+    private Scanner evolutionsInput = new Scanner(System.in);
+    private Scanner rowsInput = new Scanner(System.in);
+    private Scanner columnsInput = new Scanner(System.in);
+    private Scanner aliveSymbolInput = new Scanner(System.in);
+    private Scanner deadSymbolInput = new Scanner(System.in);
 
-        public int getEvolutions() { return evolutions; }
+    private GameDisplay display;
 
-        public int getRows() { return rows; }
+    public GameSettings(GameDisplay displayPrompts) {
+        display = displayPrompts;
+    }
 
-        public int getColumns() { return columns; }
+    public void getAllSettings() {
+        setEvolutions();
+        setRows();
+        setColumns();
+        setAliveSymbol();
+        setDeadSymbol();
+    }
 
-        public int getAliveSymbol() { return aliveSymbol; }
+    public void setEvolutions() {
+        display.evolutionsPrompt();
+        evolutions = evolutionsInput.nextInt();
+    }
 
-        public int getDeadSymbol() { return deadSymbol; }
+    public void setRows() {
+        display.rowsPrompt();
+        rows = rowsInput.nextInt();
+    }
+
+    public void setColumns() {
+        display.columnsPrompt();
+        columns = columnsInput.nextInt();
+    }
+
+    public void setAliveSymbol() {
+        display.aliveSymbolPrompt();
+        aliveSymbol = aliveSymbolInput.nextLine();
+    }
+
+    public void setDeadSymbol() {
+        display.deadSymbolPrompt();
+        deadSymbol = deadSymbolInput.nextLine();
+    }
+
+    public int getEvolutions() {
+        return evolutions;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public String getAliveSymbol() {
+        return aliveSymbol;
+    }
+
+    public String getDeadSymbol() {
+        return deadSymbol;
+    }
 
 }

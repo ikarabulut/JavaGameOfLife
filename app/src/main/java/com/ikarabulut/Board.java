@@ -51,12 +51,6 @@ public class Board {
         return board;
     }
 
-    public void setBoard(List<ArrayList> newBoard) { board = newBoard; }
-
-    public int getRows() { return rows; };
-
-    public int getColumns() { return columns; }
-
     public void setAliveAt(int row, int col) {
         Cell selectedCell = getCell(row, col);
         selectedCell.setIsAlive(true);
@@ -196,6 +190,7 @@ public class Board {
         return bottomRightNeighbor;
     }
 
+    //TODO: Move this to the public methods
     public Cell getCell(int row, int col) {
         ArrayList<Cell> rowList = board.get(row);
         return rowList.get(col);
