@@ -74,8 +74,8 @@ class GameTest {
     }
 
     private Board createBoardWithSquare() {
-        int rows = 5;
-        int columns = 5;
+        int rows = 10;
+        int columns = 10;
 
         Board board = new Board(rows, columns);
         board.setAliveAt(0, 0);

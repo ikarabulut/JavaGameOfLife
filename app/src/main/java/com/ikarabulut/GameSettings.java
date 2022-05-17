@@ -3,11 +3,11 @@ package com.ikarabulut;
 import java.util.Scanner;
 
 public class GameSettings {
-    private int evolutions;
-    private int rows;
-    private int columns;
-    private String aliveSymbol;
-    private String deadSymbol;
+    private int evolutions = 25;
+    private int rows = 10;
+    private int columns = 10;
+    private String aliveSymbol = "x";
+    private String deadSymbol = "o";
 
     private Scanner evolutionsInput = new Scanner(System.in);
     private Scanner rowsInput = new Scanner(System.in);
