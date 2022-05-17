@@ -51,10 +51,6 @@ public class Board {
         return board;
     }
 
-    public int getRows() { return rows; }
-
-    public int getColumns() { return columns; }
-
     public void setAliveAt(int row, int col) {
         Cell selectedCell = getCell(row, col);
         selectedCell.setIsAlive(true);
