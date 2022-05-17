@@ -21,15 +21,6 @@ public class GameSettings {
         display = displayPrompts;
     }
 
-    public GameSettings(String mockInput, GameDisplay displayPrompts) {
-        evolutionsInput = new Scanner(mockInput);
-        rowsInput = new Scanner(mockInput);
-        columnsInput = new Scanner(mockInput);
-        aliveSymbolInput = new Scanner(mockInput);
-        deadSymbolInput = new Scanner(mockInput);
-        display = displayPrompts;
-    }
-
     public void getAllSettings() {
         setEvolutions();
         setRows();
