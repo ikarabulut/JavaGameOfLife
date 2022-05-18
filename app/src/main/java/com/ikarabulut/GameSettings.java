@@ -27,6 +27,7 @@ public class GameSettings {
         setColumns();
         setAliveSymbol();
         setDeadSymbol();
+        setRuleSet();
     }
 
     public void setEvolutions() {
