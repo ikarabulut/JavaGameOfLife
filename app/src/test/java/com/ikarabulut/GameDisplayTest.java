@@ -23,6 +23,14 @@ class GameDisplayTest {
     }
 
     @Test
+    @DisplayName("When a new GameDisplay is generated, the rules prompt should not be null")
+    void setPrompts_rulesPromptNotNull() {
+        GameDisplay gameDisplay = new GameDisplay();
+
+        assertNotNull(gameDisplay.rulesPrompt());
+    }
+
+    @Test
     @DisplayName("When GameDisplay is initialized, all of its prompts should not be empty strings")
     void setPrompts_NotEmpty() {
         GameDisplay gameDisplay = new GameDisplay();
@@ -36,6 +44,14 @@ class GameDisplayTest {
                 () -> assertNotEquals("", gameDisplay.aliveSymbolPrompt()),
                 () -> assertNotEquals("", gameDisplay.deadSymbolPrompt())
         );
+    }
+
+    @Test
+    @DisplayName("When a new GameDisplay is generated, the rules prompt should not be empty")
+    void setPrompts_rulesPromptNotEmpty() {
+        GameDisplay gameDisplay = new GameDisplay();
+
+        assertNotEquals("", gameDisplay.rulesPrompt());
     }
 
 }
