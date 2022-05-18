@@ -1,10 +1,10 @@
 package com.ikarabulut;
 
-public class Rules {
+public class Rules implements RuleSet {
 
-    private static boolean isAliveNextGeneration;
+    private boolean isAliveNextGeneration;
 
-    public static boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive) {
+    public boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive) {
         if (aliveNeighborsCount < 2) {
             isUnderpopulated();
         } else if (isAlive && aliveNeighborsCount == 2 || aliveNeighborsCount == 3) {
@@ -15,15 +15,15 @@ public class Rules {
         return isAliveNextGeneration;
     }
 
-    private static void isUnderpopulated() {
+    public void isUnderpopulated() {
         isAliveNextGeneration = false;
     }
 
-    private static void isFertileLand() {
+    public void isFertileLand() {
         isAliveNextGeneration = true;
     }
 
-    private static void isOverpopulated() {
+    public void isOverpopulated() {
         isAliveNextGeneration = false;
     }
 

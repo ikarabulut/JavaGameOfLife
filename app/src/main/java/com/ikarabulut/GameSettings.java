@@ -9,12 +9,16 @@ public class GameSettings {
     private String aliveSymbol = "x";
     private String deadSymbol = "o";
 
+    private RulesFactory rulesFactory;
+    private RuleSet rules;
+
     private Scanner input = new Scanner(System.in);
 
     private GameDisplay display;
 
     public GameSettings(GameDisplay displayPrompts) {
         display = displayPrompts;
+        rulesFactory = new RulesFactory();
     }
 
     public void getAllSettings() {
@@ -50,6 +54,12 @@ public class GameSettings {
         deadSymbol = input.nextLine();
     }
 
+    public void setRuleSet() {
+        display.rulesPrompt();
+        int ruleSelection = Integer.parseInt(input.nextLine());
+        rules = rulesFactory.getRules(ruleSelection);
+    }
+
     public int getEvolutions() {
         return evolutions;
     }
@@ -68,6 +78,10 @@ public class GameSettings {
 
     public String getDeadSymbol() {
         return deadSymbol;
+    }
+
+    public RuleSet getRules() {
+        return rules;
     }
 
 }

@@ -22,6 +22,7 @@ public class Game {
     }
 
     public Board generateNextBoard() {
+        RuleSet rules = gameSettings.getRules();
         int rows = gameSettings.getRows();
         int columns = gameSettings.getColumns();
         Board nextBoard = new Board(rows, columns);
@@ -30,7 +31,7 @@ public class Game {
             for (int column=0; column<columns; column++) {
                 Cell cell = board.getCell(row, column);
                 int aliveNeighbors = board.getNumberOfAliveNeighbors(row, column);
-                boolean isAliveNextGeneration = Rules.willBeAliveNextGeneration(aliveNeighbors, cell.checkIfAlive());
+                boolean isAliveNextGeneration = rules.willBeAliveNextGeneration(aliveNeighbors, cell.checkIfAlive());
                 if (isAliveNextGeneration) {
                     nextBoard.setAliveAt(row, column);
                 }
