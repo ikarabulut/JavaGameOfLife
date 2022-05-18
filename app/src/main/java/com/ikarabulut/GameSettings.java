@@ -9,11 +9,7 @@ public class GameSettings {
     private String aliveSymbol = "x";
     private String deadSymbol = "o";
 
-    private Scanner evolutionsInput = new Scanner(System.in);
-    private Scanner rowsInput = new Scanner(System.in);
-    private Scanner columnsInput = new Scanner(System.in);
-    private Scanner aliveSymbolInput = new Scanner(System.in);
-    private Scanner deadSymbolInput = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
     private GameDisplay display;
 
@@ -31,27 +27,27 @@ public class GameSettings {
 
     public void setEvolutions() {
         display.evolutionsPrompt();
-        evolutions = evolutionsInput.nextInt();
+        evolutions = Integer.parseInt(input.nextLine());
     }
 
     public void setRows() {
         display.rowsPrompt();
-        rows = rowsInput.nextInt();
+        rows = Integer.parseInt(input.nextLine());
     }
 
     public void setColumns() {
         display.columnsPrompt();
-        columns = columnsInput.nextInt();
+        columns = Integer.parseInt(input.nextLine());
     }
 
     public void setAliveSymbol() {
         display.aliveSymbolPrompt();
-        aliveSymbol = aliveSymbolInput.nextLine();
+        aliveSymbol = input.nextLine();
     }
 
     public void setDeadSymbol() {
         display.deadSymbolPrompt();
-        deadSymbol = deadSymbolInput.nextLine();
+        deadSymbol = input.nextLine();
     }
 
     public int getEvolutions() {
