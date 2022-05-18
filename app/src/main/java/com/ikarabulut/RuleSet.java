@@ -4,9 +4,9 @@ public interface RuleSet {
 
     public boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive);
 
-    public void isUnderpopulated();
+    private boolean isUnderpopulated() { return false; }
 
-    public void isFertileLand();
+    private boolean isFertileLand() { return true; }
 
-    public void isOverpopulated();
+    private boolean isOverpopulated() { return false; }
 }

@@ -2,29 +2,22 @@ package com.ikarabulut;
 
 public class Rules1 implements RuleSet {
 
-    private boolean isAliveNextGeneration;
     public boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive) {
         if (aliveNeighborsCount < 2) {
-            isUnderpopulated();
+            return isUnderpopulated();
         } else if (isAlive && aliveNeighborsCount == 2
                 || isAlive && aliveNeighborsCount == 3
                 || !isAlive && aliveNeighborsCount == 4) {
-            isFertileLand();
+            return isFertileLand();
         } else {
-            isOverpopulated();
+            return isOverpopulated();
         }
-        return isAliveNextGeneration;
     }
 
-    public void isUnderpopulated() {
-        isAliveNextGeneration = false;
-    }
+    private boolean isUnderpopulated() { return false; }
 
-    public void isFertileLand() {
-        isAliveNextGeneration = true;
-    }
+    private boolean isFertileLand() { return true; }
 
-    public void isOverpopulated() {
-        isAliveNextGeneration = false;
-    }
+    private boolean isOverpopulated() { return false; }
+
 }
