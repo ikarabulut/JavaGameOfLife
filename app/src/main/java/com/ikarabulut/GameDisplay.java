@@ -3,6 +3,7 @@ package com.ikarabulut;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GameDisplay {
     private String welcomePrompt;
     private String gameSettingsPrompt;
@@ -28,11 +29,27 @@ public class GameDisplay {
                 + "Please enter the digit:";
     }
 
-    public void displayBoard(Board theBoard) {
+    public void displayBoard(Board theBoard, GameSettings theSettings) {
         List<ArrayList> boardToDisplay = theBoard.getBoard();
-        for (List<ArrayList> row : boardToDisplay) {
-            System.out.println(row);
+        for (List<Cell> row : boardToDisplay) {
+            StringBuilder displayedRow = new StringBuilder();
+            for (Cell cell : row) {
+                if (cell.checkIfAlive()) {
+                    displayedRow.append(theSettings.getAliveSymbol());
+                    displayedRow.append(" ");
+                } else {
+                    displayedRow.append(theSettings.getDeadSymbol());
+                    displayedRow.append(" ");
+                }
+            }
+            System.out.println(displayedRow);
         }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.flush();
     }
 
     public void welcomePrompt() {
@@ -66,5 +83,10 @@ public class GameDisplay {
     public void rulesPrompt() {
         System.out.println(rulesPrompt);
     }
+
+    public void displayGenerationNumber(int generation) {
+        System.out.println("Generation " + generation);
+    }
+
 
 }

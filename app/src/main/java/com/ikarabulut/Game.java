@@ -1,5 +1,7 @@
 package com.ikarabulut;
 
+import java.util.concurrent.TimeUnit;
+
 public class Game {
     private Board board;
     private GameSettings gameSettings;
@@ -17,7 +19,8 @@ public class Game {
 
         for (int i = 0; i <= numOfEvolutions; i++) {
             generateNextBoard();
-            gameDisplay.displayBoard(board);
+            gameDisplay.displayGenerationNumber(i);
+            gameDisplay.displayBoard(board, gameSettings);
         }
     }
 
