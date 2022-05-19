@@ -58,7 +58,12 @@ public class GameSettings {
     public void setRuleSet() {
         display.rulesPrompt();
         int ruleSelection = Integer.parseInt(input.nextLine());
-        rules = rulesFactory.getRules(ruleSelection);
+        try {
+            rules = rulesFactory.getRules(ruleSelection);
+        } catch (InvalidRuleSelectionException ex) {
+            System.err.print(ex.getMessage());
+            setRuleSet();
+        }
     }
 
     public int getEvolutions() {
