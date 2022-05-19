@@ -14,6 +14,8 @@ public class GameSettings {
 
     private Scanner input = new Scanner(System.in);
 
+    private int intSelection;
+
     private GameDisplay display;
 
     public GameSettings(GameDisplay displayPrompts) {
@@ -21,7 +23,7 @@ public class GameSettings {
         rulesFactory = new RulesFactory();
     }
 
-    public void getAllSettings() {
+    public void getAllSettings() throws InvalidSymbolException {
         setEvolutions();
         setRows();
         setColumns();
@@ -32,35 +34,93 @@ public class GameSettings {
 
     public void setEvolutions() {
         display.evolutionsPrompt();
-        evolutions = Integer.parseInt(input.nextLine());
+        try {
+            evolutions = Integer.parseInt(input.nextLine());
+        } catch (Exception e) {
+            System.err.print("An error occurred, please enter an integer. Try again: ");
+            setEvolutions();
+        }
     }
+
 
     public void setRows() {
         display.rowsPrompt();
-        rows = Integer.parseInt(input.nextLine());
+        try {
+            intSelection = Integer.parseInt(input.nextLine());
+        } catch (Exception ex) {
+            System.err.print("Your input is invalid. Please try again: ");
+            setRows();
+        } finally {
+            try {
+                if (intSelection > 25) {
+                    throw new IllegalArgumentException("Please limit the number of columns to under 25. Please re-enter your selection: ");
+                } else {
+                    rows = intSelection;
+                }
+            } catch (IllegalArgumentException ex) {
+                System.err.print(ex.getMessage());
+                setRows();
+            }
+        }
     }
 
     public void setColumns() {
         display.columnsPrompt();
-        columns = Integer.parseInt(input.nextLine());
+        try {
+            intSelection = Integer.parseInt(input.nextLine());
+        } catch (Exception ex) {
+            System.err.print("Your input is invalid. Please try again: ");
+            setColumns();
+        } finally {
+            try {
+                if (intSelection > 25) {
+                    throw new IllegalArgumentException("Please limit the number of columns to under 25. Please re-enter your selection: ");
+                } else {
+                    columns = intSelection;
+                }
+            } catch (IllegalArgumentException ex) {
+                System.err.print(ex.getMessage());
+                setColumns();
+            }
+        }
     }
 
     public void setAliveSymbol() {
         display.aliveSymbolPrompt();
-        aliveSymbol = input.nextLine();
+        String selection = input.nextLine();
+        try {
+            if (selection.length() > 1) {
+                throw new InvalidSymbolException("Please limit the symbol to 1 character. Please try again: ");
+            } else {
+                aliveSymbol = selection;
+            }
+        } catch (InvalidSymbolException ex) {
+            System.err.print(ex.getMessage());
+            setAliveSymbol();
+        }
     }
 
-    public void setDeadSymbol() {
+    public void setDeadSymbol() throws InvalidSymbolException {
         display.deadSymbolPrompt();
-        deadSymbol = input.nextLine();
+        String selection = input.nextLine();
+        try {
+            if (selection.length() > 1) {
+                throw new InvalidSymbolException("Please limit the symbol to 1 character. Please try again: ");
+            } else {
+                deadSymbol = selection;
+            }
+        } catch (InvalidSymbolException ex) {
+            System.err.print(ex.getMessage());
+            setDeadSymbol();
+        }
     }
 
     public void setRuleSet() {
         display.rulesPrompt();
-        int ruleSelection = Integer.parseInt(input.nextLine());
         try {
+            int ruleSelection = Integer.parseInt(input.nextLine());
             rules = rulesFactory.getRules(ruleSelection);
-        } catch (InvalidRuleSelectionException ex) {
+        } catch (NumberFormatException | InvalidRuleSelectionException ex) {
             System.err.print(ex.getMessage());
             setRuleSet();
         }

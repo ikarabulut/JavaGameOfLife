@@ -74,7 +74,7 @@ class GameSettingsTest {
 
     @Test
     @DisplayName("When prompted for dead symbol and o is passed, then deadSymbol should be set to o")
-    void setDeadSymbol() {
+    void setDeadSymbol() throws InvalidSymbolException {
         String input = "o";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
