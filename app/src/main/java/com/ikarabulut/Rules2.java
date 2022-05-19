@@ -14,10 +14,4 @@ public class Rules2 implements RuleSet {
         }
     }
 
-    private boolean isUnderpopulated() { return false; }
-
-    private boolean isFertileLand() { return true; }
-
-    private boolean isOverpopulated() { return false; }
-
 }
