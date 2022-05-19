@@ -87,7 +87,7 @@ class GameSettingsTest {
     }
 
     @Test
-    @DisplayName("When prompted for rules and 1 is passed, then the rules carried out during the game will be the Rules class")
+    @DisplayName("When prompted for rules and 1 is passed, then the rules carried out during the game will be the DefaultRules1 class")
     void setRuleSet_When1_RulesClass() {
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -100,7 +100,7 @@ class GameSettingsTest {
     }
 
     @Test
-    @DisplayName("When prompted for rules and 1 is passed, then the rules carried out during the game will be the Rules class")
+    @DisplayName("When prompted for rules and 2 is passed, then the rules carried out during the game will be the Rules2 class")
     void setRuleSet_When2_Rules1Class() {
         String input = "2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
