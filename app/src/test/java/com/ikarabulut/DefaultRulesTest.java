@@ -1,26 +1,24 @@
 package com.ikarabulut;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//1. If a living cell has less than two living neighbors, it is dead in
-//   the next generation, as if by underpopulation.
-//2. If a living cell has two or three living neighbors, it stays alive
-//   in the next generation.
-//3. If a living cell has more than three living neighbors, it is dead
-//   in the next generation, as if by overcrowding.
-//4. If a dead cell has exactly three living neighbors, it comes to
-//   life in the next generation.
+class DefaultRulesTest {
 
-class RulesTest {
+    private DefaultRules gameRules;
+    @BeforeEach
+    void initializeRulesClass() {
+        gameRules = new DefaultRules();
+    }
     @Test
     @DisplayName("When an Alive Cell has 0 alive neighbors passed, it is underpopulated, meaning it will not survive for the next generation")
     void aliveCheck_0Passed() {
         int numOfAliveNeighborsPassed = 0;
         boolean isAlive = true;
-        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
+        boolean test = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertFalse(test);
     }
 
@@ -29,7 +27,7 @@ class RulesTest {
     void aliveCheck_2Passed() {
         int numOfAliveNeighborsPassed = 2;
         boolean isAlive = true;
-        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
+        boolean test = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertTrue(test);
     }
 
@@ -38,7 +36,7 @@ class RulesTest {
     void aliveCheck_3Passed() {
         int numOfAliveNeighborsPassed = 3;
         boolean isAlive = true;
-        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
+        boolean test = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertTrue(test);
     }
 
@@ -47,7 +45,7 @@ class RulesTest {
     void aliveCheck_4Passed() {
         int numOfAliveNeighborsPassed = 4;
         boolean isAlive = true;
-        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
+        boolean test = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertFalse(test);
     }
 
@@ -56,7 +54,7 @@ class RulesTest {
     void deadCheck_3Passed() {
         int numOfAliveNeighborsPassed = 3;
         boolean isAlive = false;
-        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
+        boolean test = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertTrue(test);
     }
 
@@ -65,7 +63,7 @@ class RulesTest {
     void deadCheck_1Passed() {
         int numOfAliveNeighborsPassed = 1;
         boolean isAlive = false;
-        boolean test = Rules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
+        boolean test = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isAlive);
         assertFalse(test);
     }
 

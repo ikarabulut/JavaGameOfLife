@@ -9,16 +9,16 @@ public class GameSettings {
     private String aliveSymbol = "x";
     private String deadSymbol = "o";
 
-    private Scanner evolutionsInput = new Scanner(System.in);
-    private Scanner rowsInput = new Scanner(System.in);
-    private Scanner columnsInput = new Scanner(System.in);
-    private Scanner aliveSymbolInput = new Scanner(System.in);
-    private Scanner deadSymbolInput = new Scanner(System.in);
+    private RulesFactory rulesFactory;
+    private RuleSet rules = new DefaultRules();
+
+    private Scanner input = new Scanner(System.in);
 
     private GameDisplay display;
 
     public GameSettings(GameDisplay displayPrompts) {
         display = displayPrompts;
+        rulesFactory = new RulesFactory();
     }
 
     public void getAllSettings() {
@@ -27,31 +27,43 @@ public class GameSettings {
         setColumns();
         setAliveSymbol();
         setDeadSymbol();
+        setRuleSet();
     }
 
     public void setEvolutions() {
         display.evolutionsPrompt();
-        evolutions = evolutionsInput.nextInt();
+        evolutions = Integer.parseInt(input.nextLine());
     }
 
     public void setRows() {
         display.rowsPrompt();
-        rows = rowsInput.nextInt();
+        rows = Integer.parseInt(input.nextLine());
     }
 
     public void setColumns() {
         display.columnsPrompt();
-        columns = columnsInput.nextInt();
+        columns = Integer.parseInt(input.nextLine());
     }
 
     public void setAliveSymbol() {
         display.aliveSymbolPrompt();
-        aliveSymbol = aliveSymbolInput.nextLine();
+        aliveSymbol = input.nextLine();
     }
 
     public void setDeadSymbol() {
         display.deadSymbolPrompt();
-        deadSymbol = deadSymbolInput.nextLine();
+        deadSymbol = input.nextLine();
+    }
+
+    public void setRuleSet() {
+        display.rulesPrompt();
+        int ruleSelection = Integer.parseInt(input.nextLine());
+        try {
+            rules = rulesFactory.getRules(ruleSelection);
+        } catch (InvalidRuleSelectionException ex) {
+            System.err.print(ex.getMessage());
+            setRuleSet();
+        }
     }
 
     public int getEvolutions() {
@@ -72,6 +84,10 @@ public class GameSettings {
 
     public String getDeadSymbol() {
         return deadSymbol;
+    }
+
+    public RuleSet getRules() {
+        return rules;
     }
 
 }
