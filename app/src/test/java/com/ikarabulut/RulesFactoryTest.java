@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RulesFactoryTest {
 
@@ -15,7 +14,7 @@ class RulesFactoryTest {
         RulesFactory factory = new RulesFactory();
         RuleSet returnValue = factory.getRules(1);
 
-        MatcherAssert.assertThat(returnValue, instanceOf(Rules.class));
+        MatcherAssert.assertThat(returnValue, instanceOf(DefaultRules1.class));
     }
 
     @Test
@@ -24,7 +23,7 @@ class RulesFactoryTest {
         RulesFactory factory = new RulesFactory();
         RuleSet returnValue = factory.getRules(2);
 
-        MatcherAssert.assertThat(returnValue, instanceOf(Rules1.class));
+        MatcherAssert.assertThat(returnValue, instanceOf(Rules2.class));
     }
 
 }

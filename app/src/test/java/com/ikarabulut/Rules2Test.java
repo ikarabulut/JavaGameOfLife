@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Rules1Test {
+class Rules2Test {
 
-    Rules1 gameRules;
+    Rules2 gameRules;
 
     @BeforeEach
     void initializeRules1() {
-        gameRules = new Rules1();
+        gameRules = new Rules2();
     }
 
     @Test

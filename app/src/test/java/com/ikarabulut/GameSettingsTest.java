@@ -96,7 +96,7 @@ class GameSettingsTest {
         GameSettings settings = new GameSettings(displayPrompts);
         settings.setRuleSet();
 
-        MatcherAssert.assertThat(settings.getRules(), instanceOf(Rules.class));
+        MatcherAssert.assertThat(settings.getRules(), instanceOf(DefaultRules1.class));
     }
 
     @Test
@@ -109,7 +109,7 @@ class GameSettingsTest {
         GameSettings settings = new GameSettings(displayPrompts);
         settings.setRuleSet();
 
-        MatcherAssert.assertThat(settings.getRules(), instanceOf(Rules1.class));
+        MatcherAssert.assertThat(settings.getRules(), instanceOf(Rules2.class));
     }
 
 }

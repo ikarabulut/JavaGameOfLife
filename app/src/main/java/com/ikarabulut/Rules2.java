@@ -1,6 +1,6 @@
 package com.ikarabulut;
 
-public class Rules1 implements RuleSet {
+public class Rules2 implements RuleSet {
 
     public boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive) {
         if (aliveNeighborsCount < 2) {
