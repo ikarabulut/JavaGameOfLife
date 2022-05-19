@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DefaultRules1Test {
+class DefaultRulesTest {
 
-    private DefaultRules1 gameRules;
+    private DefaultRules gameRules;
     @BeforeEach
     void initializeRulesClass() {
-        gameRules = new DefaultRules1();
+        gameRules = new DefaultRules();
     }
     @Test
     @DisplayName("When an Alive Cell has 0 alive neighbors passed, it is underpopulated, meaning it will not survive for the next generation")

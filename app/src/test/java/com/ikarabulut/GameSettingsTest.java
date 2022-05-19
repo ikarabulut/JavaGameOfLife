@@ -87,7 +87,7 @@ class GameSettingsTest {
     }
 
     @Test
-    @DisplayName("When prompted for rules and 1 is passed, then the rules carried out during the game will be the DefaultRules1 class")
+    @DisplayName("When prompted for rules and 1 is passed, then the rules carried out during the game will be the DefaultRules class")
     void setRuleSet_When1_RulesClass() {
         String input = "1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -96,11 +96,11 @@ class GameSettingsTest {
         GameSettings settings = new GameSettings(displayPrompts);
         settings.setRuleSet();
 
-        MatcherAssert.assertThat(settings.getRules(), instanceOf(DefaultRules1.class));
+        MatcherAssert.assertThat(settings.getRules(), instanceOf(DefaultRules.class));
     }
 
     @Test
-    @DisplayName("When prompted for rules and 2 is passed, then the rules carried out during the game will be the Rules2 class")
+    @DisplayName("When prompted for rules and 2 is passed, then the rules carried out during the game will be the ComeAliveWithFour class")
     void setRuleSet_When2_Rules1Class() {
         String input = "2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -109,7 +109,7 @@ class GameSettingsTest {
         GameSettings settings = new GameSettings(displayPrompts);
         settings.setRuleSet();
 
-        MatcherAssert.assertThat(settings.getRules(), instanceOf(Rules2.class));
+        MatcherAssert.assertThat(settings.getRules(), instanceOf(ComeAliveWithFour.class));
     }
 
 }

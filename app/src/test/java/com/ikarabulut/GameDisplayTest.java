@@ -29,7 +29,7 @@ class GameDisplayTest {
     }
 
     @AfterAll
-    static void tearByteArrayOutputStream() {
+    static void tearDownObjects() {
         gameDisplay = null;
     }
 

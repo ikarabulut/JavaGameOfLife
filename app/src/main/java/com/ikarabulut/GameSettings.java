@@ -10,7 +10,7 @@ public class GameSettings {
     private String deadSymbol = "o";
 
     private RulesFactory rulesFactory;
-    private RuleSet rules = new DefaultRules1();
+    private RuleSet rules = new DefaultRules();
 
     private Scanner input = new Scanner(System.in);
 
