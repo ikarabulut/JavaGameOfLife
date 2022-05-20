@@ -1,12 +1,14 @@
 package com.ikarabulut;
 
-public interface RuleSet {
+public class RuleSet {
 
-    public boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive);
+    public boolean willBeAliveNextGeneration(int aliveNeighborsCount, boolean isAlive) {
+        return isFertileLand(aliveNeighborsCount, isAlive);
+    }
 
-    public default boolean isUnderpopulated() { return false; }
 
-    public default boolean isFertileLand() { return true; }
+    protected boolean isFertileLand(int aliveNeighborsCount, boolean isAlive) {
+        return (aliveNeighborsCount == 2 || aliveNeighborsCount == 3) && isAlive || aliveNeighborsCount == 3;
+    }
 
-    public default boolean isOverpopulated() { return false; }
 }
