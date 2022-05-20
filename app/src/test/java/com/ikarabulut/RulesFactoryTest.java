@@ -26,4 +26,22 @@ class RulesFactoryTest {
         MatcherAssert.assertThat(returnValue, instanceOf(ComeAliveWithFour.class));
     }
 
+    @Test
+    @DisplayName("When 3 is passed in to getRules, then the return will be a new ComeAliveWithTwo class object")
+    void getRules_pass3() throws InvalidRuleSelectionException{
+        RulesFactory factory = new RulesFactory();
+        RuleSet returnValue = factory.getRules(3);
+
+        MatcherAssert.assertThat(returnValue, instanceOf(ComeAliveWithTwo.class));
+    }
+
+    @Test
+    @DisplayName("When 4 is passed in to getRules, then the return will be a new ComeAliveRandomly class object")
+    void getRules_pass4() throws InvalidRuleSelectionException{
+        RulesFactory factory = new RulesFactory();
+        RuleSet returnValue = factory.getRules(4);
+
+        MatcherAssert.assertThat(returnValue, instanceOf(ComeAliveRandomly.class));
+    }
+
 }

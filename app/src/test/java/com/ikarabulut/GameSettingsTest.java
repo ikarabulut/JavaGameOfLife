@@ -101,7 +101,7 @@ class GameSettingsTest {
 
     @Test
     @DisplayName("When prompted for rules and 2 is passed, then the rules carried out during the game will be the ComeAliveWithFour class")
-    void setRuleSet_When2_Rules1Class() {
+    void setRuleSet_When2_ComeAliveWithFourClass() {
         String input = "2";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -110,6 +110,32 @@ class GameSettingsTest {
         settings.setRuleSet();
 
         MatcherAssert.assertThat(settings.getRules(), instanceOf(ComeAliveWithFour.class));
+    }
+
+    @Test
+    @DisplayName("When prompted for rules and 2 is passed, then the rules carried out during the game will be the ComeAliveWithFour class")
+    void setRuleSet_When3_ComeAliveWithTwoClass() {
+        String input = "3";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        GameSettings settings = new GameSettings(displayPrompts);
+        settings.setRuleSet();
+
+        MatcherAssert.assertThat(settings.getRules(), instanceOf(ComeAliveWithTwo.class));
+    }
+
+    @Test
+    @DisplayName("When prompted for rules and 2 is passed, then the rules carried out during the game will be the ComeAliveWithFour class")
+    void setRuleSet_When4_ComeAliveRandomlyClass() {
+        String input = "4";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        GameSettings settings = new GameSettings(displayPrompts);
+        settings.setRuleSet();
+
+        MatcherAssert.assertThat(settings.getRules(), instanceOf(ComeAliveRandomly.class));
     }
 
 }

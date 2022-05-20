@@ -104,6 +104,8 @@ class GameDisplayTest {
         assertEquals("Which RuleSet would you like to play with?" + "\n"
                         + "1: Alive Cell dies with less than 2 or more than 3 alive neighbors. Dead Cell comes to life with exactly 3 alive neighbors" + "\n"
                         + "2: Alive Cell die with less than 2 or more than 3 alive neighbors. Dead Cell comes to life with exactly 4 alive neighbors" + "\n"
+                        + "3: Alive Cell die with less than 2 or more than 3 alive neighbors. Dead Cell comes to life with exactly 2 alive neighbors" + "\n"
+                        + "4: Alive Cell die with less than 2 or more than 3 alive neighbors. Dead Cell comes to life randomly" + "\n"
                         + "Please enter the digit:"
                 , outputStreamCaptor.toString()
                         .trim());
