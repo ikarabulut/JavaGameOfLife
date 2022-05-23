@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class App {
 
-    public static void main(String[] args) throws InvalidSymbolException {
+    public static void main(String[] args) {
         GameDisplay gameDisplay = new GameDisplay();
         GameSettings gameSettings = new GameSettings(gameDisplay);
         gameSettings.getAllSettings();
