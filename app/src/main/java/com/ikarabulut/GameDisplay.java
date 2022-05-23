@@ -36,11 +36,10 @@ public class GameDisplay {
             for (Cell cell : row) {
                 if (cell.checkIfAlive()) {
                     displayedRow.append(theSettings.getAliveSymbol());
-                    displayedRow.append(" ");
                 } else {
                     displayedRow.append(theSettings.getDeadSymbol());
-                    displayedRow.append(" ");
                 }
+                displayedRow.append(" ");
             }
             System.out.println(displayedRow);
         }

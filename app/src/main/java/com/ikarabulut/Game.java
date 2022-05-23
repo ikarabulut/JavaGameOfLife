@@ -1,7 +1,5 @@
 package com.ikarabulut;
 
-import java.util.concurrent.TimeUnit;
-
 public class Game {
     private Board board;
     private GameSettings gameSettings;
