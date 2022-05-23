@@ -4,7 +4,11 @@ public class ComeAliveRandomly extends RuleSet {
 
     @Override
     protected boolean isFertileLand(int aliveNeighborsCount, boolean isAlive) {
-        return (aliveNeighborsCount == 2 || aliveNeighborsCount == 3) && isAlive || !isAlive && deadCellFateRandomizer();
+        if (isAlive) {
+            return aliveNeighborsCount == 2 || aliveNeighborsCount == 3;
+        } else {
+            return deadCellFateRandomizer();
+        }
     }
 
     private boolean deadCellFateRandomizer() {

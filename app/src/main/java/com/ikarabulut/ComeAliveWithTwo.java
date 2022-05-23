@@ -4,7 +4,11 @@ public class ComeAliveWithTwo extends RuleSet {
 
     @Override
     protected boolean isFertileLand(int aliveNeighborsCount, boolean isAlive) {
-        return (aliveNeighborsCount == 2 || aliveNeighborsCount == 3) && isAlive || aliveNeighborsCount == 2;
+        if (isAlive) {
+            return aliveNeighborsCount == 2 || aliveNeighborsCount == 3;
+        } else {
+            return aliveNeighborsCount == 2;
+        }
     }
 
 }

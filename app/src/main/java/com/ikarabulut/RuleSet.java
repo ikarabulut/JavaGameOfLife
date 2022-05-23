@@ -8,7 +8,10 @@ public class RuleSet {
 
 
     protected boolean isFertileLand(int aliveNeighborsCount, boolean isAlive) {
-        return (aliveNeighborsCount == 2 || aliveNeighborsCount == 3) && isAlive || aliveNeighborsCount == 3;
+        if (isAlive) {
+            return aliveNeighborsCount == 2 || aliveNeighborsCount == 3;
+        } else
+            return aliveNeighborsCount == 3;
     }
 
 }
