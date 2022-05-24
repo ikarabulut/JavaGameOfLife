@@ -3,7 +3,6 @@ package com.ikarabulut;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GameDisplay {
     private String welcomePrompt;
     private String gameSettingsPrompt;
