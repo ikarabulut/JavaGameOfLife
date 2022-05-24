@@ -38,43 +38,37 @@ public class GameSettings {
     public void setEvolutions() {
         display.evolutionsPrompt();
         int retries = 3;
+        String errorMessage = "An error occurred, please enter an integer. Try again: ";
 
         while (retries > 0) {
             try {
                 evolutions = Integer.parseInt(input.nextLine());
                 return;
             } catch (Exception e) {
-                System.err.print("An error occurred, please enter an integer. Try again: ");
-                retries = retries - 1;
+                retries = catchCustomErrorMessage(retries, errorMessage);
             }
             if (retries == 0) {
-                System.err.print("You have failed to choose a valid number of evolutions. Game exiting");
-                System.exit(1);
+                tooManyInvalidEntries();
             }
         }
     }
-
 
     public void setRows() {
         display.rowsPrompt();
         int intSelection = 0;
         int retries = 3;
+        String errorMessage = "Your input is invalid. Please keep under 25 and try again: ";
 
         while (retries > 0) {
             try {
                 intSelection = Integer.parseInt(input.nextLine());
-                if (intSelection > 25) {
-                    throw new IllegalArgumentException("Please limit the number of rows to under 25. Please re-enter your selection: ");
-                }
-                rows = intSelection;
-                return;
+                rows = rowColumnInputChecker(intSelection);
+                break;
             } catch (Exception ex) {
-                System.err.print("Your input is invalid. Please keep under 25 and try again: ");
-                retries = retries - 1;
+                retries = catchCustomErrorMessage(retries, errorMessage);
             }
             if (retries == 0) {
-                System.err.print("You have failed to choose a valid number of rows. Game exiting");
-                System.exit(1);
+                tooManyInvalidEntries();
             }
         }
     }
@@ -83,22 +77,18 @@ public class GameSettings {
         display.columnsPrompt();
         int intSelection = 0;
         int retries = 3;
+        String errorMessage = "Your input is invalid. Please keep under 25 and try again: ";
 
         while (retries > 0) {
             try {
                 intSelection = Integer.parseInt(input.nextLine());
-                if (intSelection > 25) {
-                    throw new IllegalArgumentException("Please limit the number of columns to under 25. Please re-enter your selection: ");
-                }
-                columns = intSelection;
-                return;
+                columns = rowColumnInputChecker(intSelection);
+                break;
             } catch (Exception ex) {
-                System.err.print("Your input is invalid. Please keep under 25 and try again: ");
-                retries = retries - 1;
+                retries = catchCustomErrorMessage(retries, errorMessage);
             }
             if (retries == 0) {
-                System.err.print("You have failed to choose a valid number of columns. Game exiting");
-                System.exit(1);
+                tooManyInvalidEntries();
             }
         }
     }
@@ -110,18 +100,13 @@ public class GameSettings {
         while (retries > 0) {
             try {
                 String selection = input.nextLine();
-                if (selection.length() > 1) {
-                    throw new InvalidSymbolException("Please limit the symbol to 1 character. Please try again: ");
-                }
-                aliveSymbol = selection;
-                return;
+                aliveSymbol = symbolInputChecker(selection);
+                break;
             } catch (InvalidSymbolException ex) {
-                System.err.print(ex.getMessage());
-                retries = retries - 1;
+                retries = catchException(retries, ex);
             }
             if (retries == 0) {
-                System.err.print("You have failed to choose a valid alive symbol. Game exiting");
-                System.exit(1);
+                tooManyInvalidEntries();
             }
         }
     }
@@ -133,18 +118,13 @@ public class GameSettings {
         while (retries > 0) {
             try {
                 String selection = input.nextLine();
-                if (selection.length() > 1) {
-                    throw new InvalidSymbolException("Please limit the symbol to 1 character. Please try again: ");
-                }
-                deadSymbol = selection;
-                return;
+                deadSymbol = symbolInputChecker(selection);
+                break;
             } catch (InvalidSymbolException ex) {
-                System.err.print(ex.getMessage());
-                retries = retries - 1;
+                retries = catchException(retries, ex);
             }
             if (retries == 0) {
-                System.err.print("You have failed to choose a valid dead symbol. Game exiting");
-                System.exit(1);
+                tooManyInvalidEntries();
             }
         }
     }
@@ -157,14 +137,12 @@ public class GameSettings {
             try {
                 int ruleSelection = Integer.parseInt(input.nextLine());
                 rules = rulesFactory.getRules(ruleSelection);
-                return;
+                break;
             } catch (NumberFormatException | InvalidRuleSelectionException ex) {
-                System.err.print(ex.getMessage());
-                retries = retries - 1;
+                retries = catchException(retries, ex);
             }
             if (retries == 0) {
-                System.err.print("You have failed to choose a valid rule set. Game exiting");
-                System.exit(1);
+                tooManyInvalidEntries();
             }
         }
     }
@@ -191,6 +169,35 @@ public class GameSettings {
 
     public RuleSet getRules() {
         return rules;
+    }
+
+    private void tooManyInvalidEntries() {
+        System.err.print("You have failed to choose a valid number of evolutions. Game exiting");
+        System.exit(1);
+    }
+
+    private int rowColumnInputChecker(int intSelection) {
+        if (intSelection > 25) {
+            throw new IllegalArgumentException("Please limit this input to under 25. Please re-enter your selection: ");
+        }
+        return intSelection;
+    }
+
+    private String symbolInputChecker(String selection) {
+        if (selection.length() > 1) {
+            throw new InvalidSymbolException("Please limit the symbol to 1 character. Please try again: ");
+        }
+        return selection;
+    }
+
+    private int catchException(int retries, Exception ex) {
+        System.err.print(ex.getMessage());
+        return retries - 1;
+    }
+
+    private int catchCustomErrorMessage(int retries, String errorMessage) {
+        System.err.print(errorMessage);
+        return retries - 1;
     }
 
 }
