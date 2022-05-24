@@ -1,4 +1,7 @@
-package com.ikarabulut;
+package com.ikarabulut.UI;
+
+import com.ikarabulut.Board;
+import com.ikarabulut.Cell;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +27,9 @@ public class GameDisplay {
         deadSymbolPrompt = "Enter a letter for your Dead Cell symbol";
         rulesPrompt = "Which RuleSet would you like to play with?" + "\n"
                 + "1: Alive Cell dies with less than 2 or more than 3 alive neighbors. Dead Cell comes to life with exactly 3 alive neighbors" + "\n"
-                + "2: Alive Cell die with less than 2 or more than 3 alive neighbors. Dead Cell comes to life with exactly 4 alive neighbors" + "\n"
+                + "2: Alive Cell dies with less than 2 or more than 3 alive neighbors. Dead Cell comes to life with exactly 4 alive neighbors" + "\n"
+                + "3: Alive Cell dies with less than 2 or more than 3 alive neighbors. Dead Cell comes to life with exactly 2 alive neighbors" + "\n"
+                + "4: Alive Cell dies with less than 2 or more than 3 alive neighbors. Dead Cell comes to life randomly" + "\n"
                 + "Please enter the digit:";
     }
 

@@ -1,5 +1,6 @@
 package com.ikarabulut;
 
+import com.ikarabulut.Rules.ComeAliveWithFour;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,19 +19,34 @@ class ComeAliveWithFourTest {
     @Test
     @DisplayName("When a Dead Cell has 4 alive neighbors, it should be revived")
     void willBeAliveNextGeneration_DeadWith4() {
-        assertTrue(gameRules.willBeAliveNextGeneration(4, false));
+        int numOfAliveNeighborsPassed = 4;
+        boolean isCurrentCellAlive = false;
+
+        boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
+
+        assertTrue(willBeAlive);
     }
 
     @Test
     @DisplayName("When a Dead Cell has 3 alive neighbors, it will stay dead")
     void willBeAliveNextGeneration_DeadWith3() {
-        assertFalse(gameRules.willBeAliveNextGeneration(3, false));
+        int numOfAliveNeighborsPassed = 3;
+        boolean isCurrentCellAlive = false;
+
+        boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
+
+        assertFalse(willBeAlive);
     }
 
     @Test
     @DisplayName("When a Dead Cell has 5 alive neighbors, it will stay dead")
     void willBeAliveNextGeneration_DeadWith5() {
-        assertFalse(gameRules.willBeAliveNextGeneration(5, false));
+        int numOfAliveNeighborsPassed = 5;
+        boolean isCurrentCellAlive = false;
+
+        boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
+
+        assertFalse(willBeAlive);
     }
 
     @Test
@@ -45,13 +61,23 @@ class ComeAliveWithFourTest {
     @Test
     @DisplayName("When an Alive Cell has 1 alive neighbor, it will die")
     void willBeAliveNextGeneration_AliveWith1() {
-        assertFalse(gameRules.willBeAliveNextGeneration(1, true));
+        int numOfAliveNeighborsPassed = 1;
+        boolean isCurrentCellAlive = true;
+
+        boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
+
+        assertFalse(willBeAlive);
     }
 
     @Test
     @DisplayName("When an Alive Cell has 4 alive neighbors, it will die")
     void willBeAliveNextGeneration_AliveWith4() {
-        assertFalse(gameRules.willBeAliveNextGeneration(4, true));
+        int numOfAliveNeighborsPassed = 4;
+        boolean isCurrentCellAlive = true;
+
+        boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
+        
+        assertFalse(willBeAlive);
     }
 
 }

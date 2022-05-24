@@ -1,19 +1,20 @@
 package com.ikarabulut;
 
-import com.ikarabulut.Rules.DefaultRules;
+import com.ikarabulut.Rules.ComeAliveRandomly;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DefaultRulesTest {
+class ComeAliveRandomlyTest {
+    private ComeAliveRandomly gameRules;
 
-    private DefaultRules gameRules;
     @BeforeEach
     void initializeRulesClass() {
-        gameRules = new DefaultRules();
+        gameRules = new ComeAliveRandomly();
     }
+
     @Test
     @DisplayName("When an Alive Cell has 0 alive neighbors passed, it is underpopulated, meaning it will not survive for the next generation")
     void aliveCheck_0Passed() {
@@ -52,28 +53,6 @@ class DefaultRulesTest {
     void aliveCheck_4Passed() {
         int numOfAliveNeighborsPassed = 4;
         boolean isCurrentCellAlive = true;
-
-        boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
-
-        assertFalse(willBeAlive);
-    }
-
-    @Test
-    @DisplayName("When a Dead Cell has 3 alive neighbors passed, it is on revivable land, meaning it will come to life for the next generation")
-    void deadCheck_3Passed() {
-        int numOfAliveNeighborsPassed = 3;
-        boolean isCurrentCellAlive = false;
-
-        boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
-
-        assertTrue(willBeAlive);
-    }
-
-    @Test
-    @DisplayName("When a Dead Cell has 1 alive neighbors passed, it is not on revivable land, meaning it will stay dead for the next generation")
-    void deadCheck_1Passed() {
-        int numOfAliveNeighborsPassed = 1;
-        boolean isCurrentCellAlive = false;
 
         boolean willBeAlive = gameRules.willBeAliveNextGeneration(numOfAliveNeighborsPassed, isCurrentCellAlive);
 

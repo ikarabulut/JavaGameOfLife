@@ -1,4 +1,10 @@
-package com.ikarabulut;
+package com.ikarabulut.UI;
+
+import com.ikarabulut.Exceptions.InvalidRuleSelectionException;
+import com.ikarabulut.Exceptions.InvalidSymbolException;
+import com.ikarabulut.Rules.DefaultRules;
+import com.ikarabulut.Rules.RuleSet;
+import com.ikarabulut.Rules.RulesFactory;
 
 import java.util.Scanner;
 
