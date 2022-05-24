@@ -27,19 +27,4 @@ class CellTest {
         cell.setIsAlive(false);
         assertFalse(cell.checkIfAlive());
     }
-
-    @Test
-    @DisplayName("When no arguments are passed, and the cell is alive, it will return O")
-    void testAliveToString() {
-        Cell cell = new Cell();
-        assertEquals("-", cell.toString());
-    }
-
-    @Test
-    @DisplayName("When no arguments are passed, and the cell is alive, it will return -")
-    void testDeadToString() {
-        Cell cell = new Cell();
-        cell.setIsAlive(true);
-        assertEquals("O", cell.toString());
-    }
 }

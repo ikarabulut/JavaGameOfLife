@@ -17,7 +17,8 @@ public class Game {
 
         for (int i = 0; i <= numOfEvolutions; i++) {
             generateNextBoard();
-            gameDisplay.displayBoard(board);
+            gameDisplay.displayGenerationNumber(i);
+            gameDisplay.displayBoard(board, gameSettings);
         }
     }
 
