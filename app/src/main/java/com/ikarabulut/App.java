@@ -1,5 +1,8 @@
 package com.ikarabulut;
 
+import com.ikarabulut.UI.GameDisplay;
+import com.ikarabulut.UI.GameSettings;
+
 public class App {
 
     public static void main(String[] args) {

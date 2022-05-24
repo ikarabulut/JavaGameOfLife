@@ -1,4 +1,7 @@
-package com.ikarabulut;
+package com.ikarabulut.UI;
+
+import com.ikarabulut.Board;
+import com.ikarabulut.Cell;
 
 import java.util.ArrayList;
 import java.util.List;

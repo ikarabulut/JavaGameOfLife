@@ -1,5 +1,6 @@
 package com.ikarabulut;
 
+import com.ikarabulut.Rules.ComeAliveWithTwo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

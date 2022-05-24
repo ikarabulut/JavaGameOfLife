@@ -1,4 +1,4 @@
-package com.ikarabulut;
+package com.ikarabulut.Exceptions;
 
 public class InvalidSymbolException extends RuntimeException {
 

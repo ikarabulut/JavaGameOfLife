@@ -1,4 +1,6 @@
-package com.ikarabulut;
+package com.ikarabulut.Rules;
+
+import com.ikarabulut.Exceptions.InvalidRuleSelectionException;
 
 public class RulesFactory {
 

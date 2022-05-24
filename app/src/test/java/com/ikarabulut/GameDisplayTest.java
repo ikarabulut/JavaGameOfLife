@@ -1,5 +1,6 @@
 package com.ikarabulut;
 
+import com.ikarabulut.UI.GameDisplay;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;

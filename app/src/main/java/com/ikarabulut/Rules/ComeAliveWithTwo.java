@@ -1,4 +1,4 @@
-package com.ikarabulut;
+package com.ikarabulut.Rules;
 
 public class ComeAliveWithTwo extends RuleSet {
 

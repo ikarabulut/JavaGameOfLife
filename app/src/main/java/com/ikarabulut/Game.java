@@ -1,5 +1,9 @@
 package com.ikarabulut;
 
+import com.ikarabulut.Rules.RuleSet;
+import com.ikarabulut.UI.GameDisplay;
+import com.ikarabulut.UI.GameSettings;
+
 public class Game {
     private Board board;
     private GameSettings gameSettings;
